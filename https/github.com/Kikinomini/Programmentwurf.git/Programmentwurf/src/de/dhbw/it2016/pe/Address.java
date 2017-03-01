@@ -1,10 +1,7 @@
 package de.dhbw.it2016.pe;
 
 public class Address {
-	//ToDo Löschen
-	//test
-	//test
-	//es klappt
+
 	private String street;
 	private String streetNumber;
 	private String city;
