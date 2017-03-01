@@ -1,0 +1,5 @@
+Invalid number input yields unhandled exception
+Input 2,3 or 4 without having loaded a student: unhandled exception!
+Wrong ID: Exception!
+Data can be retrieved properly
+Data is always yielded as expected in Germany
