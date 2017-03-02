@@ -11,5 +11,4 @@ public class AddressTest {
 		String expected = "Finkenweg 1\n12345 Berlin";
 		assertEquals(expected, address.format());
 	}
-
 }
