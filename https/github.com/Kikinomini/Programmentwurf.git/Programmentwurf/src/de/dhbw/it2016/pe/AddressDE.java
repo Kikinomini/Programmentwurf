@@ -1,13 +1,13 @@
 package de.dhbw.it2016.pe;
 
-public class Address {
+public class AddressDE implements AbstractAddress{
 
 	private String street;
 	private String streetNumber;
 	private String city;
 	private String zipCode;
 	
-	public Address(String street, String streetNumber, String city, String zipCode, String country) {
+	public AddressDE(String street, String streetNumber, String city, String zipCode, String country) {
 		this.street = street;
 		this.streetNumber = streetNumber;
 		this.city = city;

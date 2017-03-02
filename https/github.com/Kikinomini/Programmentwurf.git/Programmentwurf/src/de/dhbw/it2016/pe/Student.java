@@ -7,7 +7,7 @@ public class Student {
 	private String id;
 	private String firstName;
 	private String lastName;
-	private Address address;
+	private AddressDE address;
 	private PhoneNumber phone;
 
 	public Student(String id) {
@@ -43,7 +43,7 @@ public class Student {
 		this.id = id;
 		firstName = data.get(1);
 		lastName = data.get(2);
-		address = new Address(data.get(3), data.get(4), data.get(5),
+		address = new AddressDE(data.get(3), data.get(4), data.get(5),
 				data.get(6), data.get(7));
 		phone = new PhoneNumber(data.get(8), data.get(9), data.get(7));
 	}
