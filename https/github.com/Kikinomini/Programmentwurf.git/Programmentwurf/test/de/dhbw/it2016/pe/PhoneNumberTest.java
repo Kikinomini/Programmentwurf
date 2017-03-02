@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class PhoneNumberTest {
-	
-	//test
-
 	@Test
 	public void testFormat() {
 		PhoneNumber phone = new PhoneNumber("01234", "56789", "DE");
