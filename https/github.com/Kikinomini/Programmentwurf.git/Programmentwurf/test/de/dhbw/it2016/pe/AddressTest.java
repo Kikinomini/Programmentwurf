@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AddressTest {
 
 	public void testFormat() {
-		Address address = new Address("Finkenweg", "1", "Berlin", "12345", "DE");
+		AddressDE address = new AddressDE("Finkenweg", "1", "Berlin", "12345", "DE");
 		String expected = "Finkenweg 1\n12345 Berlin";
 		assertEquals(expected, address.format());
 	}
