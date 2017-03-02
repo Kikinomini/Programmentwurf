@@ -9,7 +9,7 @@ public class StudentTest {
 	@Test
 	public void TestName() 
 	{
-		Student cloneStudent = new Student("6");
+		StudentDE cloneStudent = new StudentDE("6");
 		
 		String firstName = cloneStudent.getFirstName();
 		assertEquals("Sarah", firstName);
@@ -21,7 +21,7 @@ public class StudentTest {
 	@Test
 	public void testInternationalPhone()
 	{
-		Student helsinkiStudent = new Student("5");
+		StudentDE helsinkiStudent = new StudentDE("5");
 		
 		String TelNr = helsinkiStudent.intlPhone();
 		assertEquals("+358-1141-941115", TelNr);

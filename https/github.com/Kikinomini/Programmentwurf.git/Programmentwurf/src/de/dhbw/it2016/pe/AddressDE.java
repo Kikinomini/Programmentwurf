@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe;
 
-public class AddressDE implements AbstractAddress{
+public class AddressDE implements Address{
 
 	private String street;
 	private String streetNumber;

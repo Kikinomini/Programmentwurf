@@ -12,7 +12,7 @@ public class Main {
 
 		String id = null;
 		
-		Student student = null;
+		StudentDE student = null;
 		
 		while (true) {
 
@@ -35,7 +35,7 @@ public class Main {
 			case SearchStudentByID:
 				System.out.println("Enter id: ");
 				id = cin.readLine();
-				student = new Student(id);
+				student = new StudentDE(id);
 				System.out.println("Successfully selected " + student.info());
 				continue;
 				

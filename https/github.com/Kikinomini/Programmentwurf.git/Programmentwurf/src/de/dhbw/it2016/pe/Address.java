@@ -1,5 +1,5 @@
 package de.dhbw.it2016.pe;
 
-public interface PhoneNumber {
+public interface Address {
 
 }
