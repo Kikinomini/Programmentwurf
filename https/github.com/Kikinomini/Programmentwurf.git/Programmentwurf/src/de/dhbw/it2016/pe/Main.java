@@ -1,4 +1,4 @@
-1package de.dhbw.it2016.pe;
+package de.dhbw.it2016.pe;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
