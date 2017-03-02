@@ -12,7 +12,7 @@ public class Main {
 
 		String id = null;
 		
-		Student student = null;
+		StudentDE student = null;
 		
 		while (true) {
 
@@ -32,7 +32,7 @@ public class Main {
 			if (action == 1) {
 				System.out.println("Enter id: ");
 				id = cin.readLine();
-				student = new Student(id);
+				student = new StudentDE(id);
 				System.out.println("Successfully selected " + student.info());
 			} else if (action == 2) {
 				System.out.println(student.info());

@@ -2,7 +2,7 @@ package de.dhbw.it2016.pe;
 
 import java.util.List;
 
-public class Student {
+public class StudentDE implements AbstractFactory{
 
 	private String id;
 	private String firstName;
@@ -10,7 +10,7 @@ public class Student {
 	private AddressDE address;
 	private PhoneNumber phone;
 
-	public Student(String id) {
+	public StudentDE(String id) {
 		readDataFromStore(id);
 	}
 
@@ -43,9 +43,15 @@ public class Student {
 		this.id = id;
 		firstName = data.get(1);
 		lastName = data.get(2);
-		address = new AddressDE(data.get(3), data.get(4), data.get(5),
-				data.get(6), data.get(7));
+		address = createAddressDE();
 		phone = new PhoneNumber(data.get(8), data.get(9), data.get(7));
+	}
+
+	@Override
+	public AddressDE createAddressDE() {
+		List<String> data = DataStore.read(this.id);
+		return new AddressDE(data.get(3), data.get(4), data.get(5),
+				data.get(6), data.get(7));
 	}
 
 }
