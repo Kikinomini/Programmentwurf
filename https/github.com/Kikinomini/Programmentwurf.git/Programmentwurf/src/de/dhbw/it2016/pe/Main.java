@@ -20,36 +20,48 @@ public class Main {
 
 			String input = cin.readLine();
 
-			int action = 0;
+			MainAction action;
 
 			try {
-				action = Integer.parseInt(input);
+				int tsAction = Integer.parseInt(input);
+				action = MainAction.values()[tsAction];
 			} catch (NumberFormatException e) {
 				System.out.println("Invalid Input!");
 				continue;
 			}
 
-			if (action == 1) {
+			switch (action) 
+			{
+			case SearchStudentByID:
 				System.out.println("Enter id: ");
 				id = cin.readLine();
 				student = new Student(id);
 				System.out.println("Successfully selected " + student.info());
-			} else if (action == 2) {
+				continue;
+				
+			case DisplayInfo:
 				System.out.println(student.info());
-			} else if (action == 3) {
+				continue;
+				
+			case DisplayAddress:
 				System.out.println(student.address());
-			} else if (action == 4) {
+				continue;
+				
+			case DisplayPhoneNumber:
 				System.out.println(student.phone());
-			} else if (action == 5) {
+				continue;
+				
+			case DisplayIntlPhoneNumber:
 				System.out.println(student.intlPhone());
-			} else if (action == 6) {
-				System.out.println(student.info());
-			} else if (action == 7) {
-				System.out.println(student.info());
-			} else if (action == 8) {
+				continue;
+				
+			case ExitProgram:
+			case ErrorCase:
+			default:
 				break;
 			}
-
+			
+			break;
 		}
 
 		System.out.println("Thank you for using the DHBW Student Management System :-)");

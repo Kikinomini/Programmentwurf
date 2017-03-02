@@ -8,8 +8,8 @@ public class AddressTest {
 
 	@Test
 	public void testFormat() {
-		AddressDE address = new AddressDE("Finkenweg", "1", "Berlin", "12345", "DE");
-		String expected = "Finkenweg 1\n12345 Berlin";
+		AddressDE address = new AddressDE("Finkenweg", "11", "Berlin", "12345", "DE");
+		String expected = "Finkenweg 11\r\n12345 Berlin";
 		assertEquals(expected, address.format());
 	}
 }
