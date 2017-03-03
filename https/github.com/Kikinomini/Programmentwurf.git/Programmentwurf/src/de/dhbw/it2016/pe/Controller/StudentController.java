@@ -34,6 +34,11 @@ public class StudentController {
 			AbstractStudentFactory student = new StudentUS(data);
 			return student;
 		}
+		else if(country.equals("GB"))
+		{
+			AbstractStudentFactory student = new StudentGB(data);
+			return student;
+		}
 		return null;
 	}
 
