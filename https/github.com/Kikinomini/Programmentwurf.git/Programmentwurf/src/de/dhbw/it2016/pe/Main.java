@@ -19,7 +19,7 @@ public class Main {
 		
 		while (true) {
 
-			whatWillYouDo();
+			chooseMainAction();
 
 			String input = cin.readLine();
 
@@ -75,7 +75,7 @@ public class Main {
 		cin.close();
 	}
 
-	private static void whatWillYouDo() {
+	private static void chooseMainAction() {
 		System.out.println("What will you do?");
 		System.out.println("[1] - Search for student by id");
 		System.out.println("[2] - Display info");
