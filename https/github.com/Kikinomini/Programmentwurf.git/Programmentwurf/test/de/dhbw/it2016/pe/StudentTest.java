@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import de.dhbw.it2016.pe.StudentClasses.StudentDE;
+import de.dhbw.it2016.pe.StudentClasses.*;
 
 public class StudentTest {
 
@@ -18,14 +18,5 @@ public class StudentTest {
 		
 		String lastName = cloneStudent.getLastName();
 		assertEquals("Manning", lastName);
-	}
-	
-	@Test
-	public void testInternationalPhone()
-	{
-		StudentDE helsinkiStudent = new StudentDE("5");
-		
-		String TelNr = helsinkiStudent.intlPhone();
-		assertEquals("+358-1141-941115", TelNr);
 	}
 }

@@ -5,7 +5,6 @@ public class PhoneNumberDE implements PhoneNumber{
 	private String areaCode;
 	private String subscriber;
 
-
 	public PhoneNumberDE(String areaCode, String subscriber, String country) {
 		this.areaCode = areaCode;
 		this.subscriber = subscriber;

@@ -7,14 +7,11 @@ import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.AddressClasses.AddressDE;
 import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberDE;
 
-public class StudentDE implements AbstractStudentFactory{
+public class StudentDE extends Student implements AbstractStudentFactory{
 
-	private String id;
-	private String firstName;
-	private String lastName;
-	private AddressDE address;
-	private PhoneNumberDE phone;
-
+	protected AddressDE address;
+	protected PhoneNumberDE phone;
+	
 	public StudentDE(String id) {
 		readDataFromStore(id);
 	}

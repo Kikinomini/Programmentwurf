@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberDE;
+import de.dhbw.it2016.pe.PhoneNumberClasses.*;
 
 public class PhoneNumberTest {
 	@Test
@@ -15,10 +15,17 @@ public class PhoneNumberTest {
 	}
 
 	@Test
-	public void testFormatInternational() {
+	public void testFormatInternationalGermany() {
 		PhoneNumberDE phone = new PhoneNumberDE("01234", "56789", "DE");
 		String expected = "+49-1234-56789";
 		assertEquals(expected, phone.formatInternational());
 	}
-
+	
+	@Test
+	public void testFormatInternationalFinland() 
+	{
+		PhoneNumberFN phone = new PhoneNumberFN("09", "458580", "FN");
+		String expected = "+358-9-458580";
+		assertEquals(expected, phone.formatInternational());
+	}
 }
