@@ -3,6 +3,8 @@ package de.dhbw.it2016.pe;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import de.dhbw.it2016.pe.StudentClasses.StudentDE;
+
 public class Main {
 
 	private static BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
@@ -10,17 +12,16 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Welcome to the DHBW Student Management System!");
 
+		AbstractStudentFactory studFactory;
 		String id = null;
-		
 		StudentDE student = null;
+		MainAction action;
 		
 		while (true) {
 
 			whatWillYouDo();
 
 			String input = cin.readLine();
-
-			MainAction action;
 
 			try {
 				int tsAction = Integer.parseInt(input);
@@ -39,6 +40,8 @@ public class Main {
 				System.out.println("Successfully selected " + student.info());
 				continue;
 				
+			// TODO: For all other cases, Exceptions must be handled! 
+				
 			case DisplayInfo:
 				System.out.println(student.info());
 				continue;
@@ -56,9 +59,12 @@ public class Main {
 				continue;
 				
 			case ExitProgram:
+				break;
+			
 			case ErrorCase:
 			default:
-				break;
+				System.out.println("Please enter a valid number!");
+				continue;
 			}
 			
 			break;

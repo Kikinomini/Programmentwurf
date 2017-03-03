@@ -1,4 +1,4 @@
-package de.dhbw.it2016.pe;
+package de.dhbw.it2016.pe.PhoneNumberClasses;
 
 public class PhoneNumberDE implements PhoneNumber{
 
@@ -11,7 +11,7 @@ public class PhoneNumberDE implements PhoneNumber{
 		this.subscriber = subscriber;
 	}
 	
-	public String format() {
+	public String formatNational() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(areaCode);
 		builder.append("-");

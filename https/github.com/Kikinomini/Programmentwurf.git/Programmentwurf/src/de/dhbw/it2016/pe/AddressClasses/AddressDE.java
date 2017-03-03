@@ -1,4 +1,4 @@
-package de.dhbw.it2016.pe;
+package de.dhbw.it2016.pe.AddressClasses;
 
 public class AddressDE implements Address{
 
@@ -14,7 +14,7 @@ public class AddressDE implements Address{
 		this.zipCode = zipCode;
 	}
 	
-	public String format() {
+	public String formatAddress() {
 		String newline = System.getProperty("line.separator");
 		StringBuilder builder = new StringBuilder();
 		builder.append(street);

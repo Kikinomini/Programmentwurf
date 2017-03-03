@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import de.dhbw.it2016.pe.StudentClasses.StudentDE;
+
 public class StudentTest {
 
 	@Test
