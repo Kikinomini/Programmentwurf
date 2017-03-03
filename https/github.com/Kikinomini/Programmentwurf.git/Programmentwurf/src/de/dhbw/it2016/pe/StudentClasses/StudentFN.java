@@ -39,12 +39,12 @@ public class StudentFN extends Student implements AbstractStudentFactory {
 
 	@Override
 	public PhoneNumberFN createPhoneNumber(List<String> data) {
-		return new PhoneNumberFN(data.get(8), data.get(9), data.get(7));
+		return new PhoneNumberFN(data.get(8), data.get(9));
 	}
 
 	@Override
 	public AddressFN createAddress(List<String> data) {
 		return new AddressFN(data.get(3), data.get(4), data.get(5),
-				data.get(6), data.get(7));
+				data.get(6));
 	}
 }

@@ -5,7 +5,7 @@ public class PhoneNumberFN implements PhoneNumber {
 	private String areaCode;
 	private String subscriber;
 
-	public PhoneNumberFN(String areaCode, String subscriber, String country) {
+	public PhoneNumberFN(String areaCode, String subscriber) {
 		this.areaCode = areaCode;
 		this.subscriber = subscriber;
 	}
