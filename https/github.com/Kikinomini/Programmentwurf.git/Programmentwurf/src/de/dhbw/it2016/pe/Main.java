@@ -2,7 +2,9 @@ package de.dhbw.it2016.pe;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.List;
 
+import de.dhbw.it2016.pe.Controller.StudentController;
 import de.dhbw.it2016.pe.StudentClasses.StudentDE;
 
 public class Main {
@@ -12,10 +14,12 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Welcome to the DHBW Student Management System!");
 
-		AbstractStudentFactory studFactory;
+		
 		String id = null;
 		StudentDE student = null;
+		AbstractStudentFactory studFactory = null;
 		MainAction action;
+		StudentController sController = new StudentController();
 		
 		while (true) {
 
@@ -36,26 +40,27 @@ public class Main {
 			case SearchStudentByID:
 				System.out.println("Enter id: ");
 				id = cin.readLine();
-				student = new StudentDE(id);
-				System.out.println("Successfully selected " + student.info());
+				List<String> data = sController.readCountryFromStore(id);
+				studFactory =  sController.erzeugeStudent(data);
+				System.out.println("Successfully selected " + studFactory.info());
 				continue;
 				
 			// TODO: For all other cases, Exceptions must be handled! 
 				
 			case DisplayInfo:
-				System.out.println(student.info());
+				System.out.println(studFactory.info());
 				continue;
 				
 			case DisplayAddress:
-				System.out.println(student.address());
+				System.out.println(studFactory.address());
 				continue;
 				
 			case DisplayPhoneNumber:
-				System.out.println(student.phone());
+				System.out.println(studFactory.phone());
 				continue;
 				
 			case DisplayIntlPhoneNumber:
-				System.out.println(student.intlPhone());
+				System.out.println(studFactory.intlPhone());
 				continue;
 				
 			case ExitProgram:

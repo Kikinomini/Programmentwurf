@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.dhbw.it2016.pe.AbstractStudentFactory;
 import de.dhbw.it2016.pe.DataStore;
+import de.dhbw.it2016.pe.AddressClasses.Address;
 import de.dhbw.it2016.pe.AddressClasses.AddressDE;
 import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberDE;
 
@@ -12,8 +13,12 @@ public class StudentDE extends Student implements AbstractStudentFactory{
 	protected AddressDE address;
 	protected PhoneNumberDE phone;
 	
-	public StudentDE(String id) {
-		readDataFromStore(id);
+	public StudentDE(List<String> data) {
+		super();
+		firstName = data.get(1);
+		lastName = data.get(2);
+		address = createAddress(data);
+		id = data.get(10);
 	}
 
 	public String address() {
@@ -40,26 +45,17 @@ public class StudentDE extends Student implements AbstractStudentFactory{
 		return id + ": " + firstName + " " + lastName;
 	}
 
-	private void readDataFromStore(String id) {
-		List<String> data = DataStore.read(id);
-		this.id = id;
-		firstName = data.get(1);
-		lastName = data.get(2);
-		address = createAddress();
-		phone = createPhoneNumber();
-	}
-
-	@Override
-	public AddressDE createAddress() {
-		List<String> data = DataStore.read(this.id);
-		return new AddressDE(data.get(3), data.get(4), data.get(5),
-				data.get(6), data.get(7));
-	}
 
 	@Override
 	public PhoneNumberDE createPhoneNumber() {
 		List<String> data = DataStore.read(this.id);
 		return new PhoneNumberDE(data.get(8), data.get(9), data.get(7));
+	}
+
+	@Override
+	public AddressDE createAddress(List<String> data) {
+		return new AddressDE(data.get(3), data.get(4), data.get(5),
+				data.get(6));
 	}
 
 }

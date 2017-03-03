@@ -7,7 +7,7 @@ public class AddressDE implements Address{
 	private String city;
 	private String zipCode;
 	
-	public AddressDE(String street, String streetNumber, String city, String zipCode, String country) {
+	public AddressDE(String street, String streetNumber, String city, String zipCode) {
 		this.street = street;
 		this.streetNumber = streetNumber;
 		this.city = city;
