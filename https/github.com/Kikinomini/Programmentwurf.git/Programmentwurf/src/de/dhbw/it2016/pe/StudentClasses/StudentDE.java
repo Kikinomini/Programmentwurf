@@ -18,7 +18,8 @@ public class StudentDE extends Student implements AbstractStudentFactory{
 		firstName = data.get(1);
 		lastName = data.get(2);
 		address = createAddress(data);
-		id = data.get(10);
+		phone = createPhoneNumber(data);
+		id = data.get(0);
 	}
 
 	public String address() {
@@ -33,22 +34,8 @@ public class StudentDE extends Student implements AbstractStudentFactory{
 		return phone.formatInternational();
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String info() {
-		return id + ": " + firstName + " " + lastName;
-	}
-
-
 	@Override
-	public PhoneNumberDE createPhoneNumber() {
-		List<String> data = DataStore.read(this.id);
+	public PhoneNumberDE createPhoneNumber(List<String> data) {
 		return new PhoneNumberDE(data.get(8), data.get(9), data.get(7));
 	}
 

@@ -7,7 +7,7 @@ import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumber;
 
 public interface AbstractStudentFactory {
 	public Address createAddress(List<String> data);
-	public PhoneNumber createPhoneNumber();
+	public PhoneNumber createPhoneNumber(List<String> data);
 	public String info();
 	public String address();
 	public String phone();

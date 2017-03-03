@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import de.dhbw.it2016.pe.Controller.StudentController;
-import de.dhbw.it2016.pe.StudentClasses.StudentDE;
 
 public class Main {
 
@@ -16,7 +15,6 @@ public class Main {
 
 		
 		String id = null;
-		StudentDE student = null;
 		AbstractStudentFactory studFactory = null;
 		MainAction action;
 		StudentController sController = new StudentController();

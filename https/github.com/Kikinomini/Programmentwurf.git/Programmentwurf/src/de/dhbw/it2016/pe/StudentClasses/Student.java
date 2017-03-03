@@ -6,4 +6,16 @@ public abstract class Student {
 	protected String id;
 	protected String firstName;
 	protected String lastName;
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String info() {
+		return id + ": " + firstName + " " + lastName;
+	}
 }
