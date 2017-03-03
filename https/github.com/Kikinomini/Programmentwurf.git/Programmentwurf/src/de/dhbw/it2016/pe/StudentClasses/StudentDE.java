@@ -3,8 +3,6 @@ package de.dhbw.it2016.pe.StudentClasses;
 import java.util.List;
 
 import de.dhbw.it2016.pe.AbstractStudentFactory;
-import de.dhbw.it2016.pe.DataStore;
-import de.dhbw.it2016.pe.AddressClasses.Address;
 import de.dhbw.it2016.pe.AddressClasses.AddressDE;
 import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberDE;
 

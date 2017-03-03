@@ -9,14 +9,10 @@ import de.dhbw.it2016.pe.StudentClasses.StudentFN;
 import de.dhbw.it2016.pe.StudentClasses.StudentUS;
 
 public class StudentController {
-	
-	private String id;
-	
+		
 	public List<String> readCountryFromStore(String id)
 	{
 		List<String> data = DataStore.read(id);
-		this.id = id;
-		data.add(id);
 		return data;
 	}
 	
