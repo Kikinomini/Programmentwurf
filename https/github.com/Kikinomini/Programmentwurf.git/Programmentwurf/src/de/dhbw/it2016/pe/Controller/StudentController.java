@@ -6,6 +6,7 @@ import de.dhbw.it2016.pe.AbstractStudentFactory;
 import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.StudentClasses.StudentDE;
 import de.dhbw.it2016.pe.StudentClasses.StudentFN;
+import de.dhbw.it2016.pe.StudentClasses.StudentGB;
 import de.dhbw.it2016.pe.StudentClasses.StudentUS;
 
 public class StudentController {
