@@ -1,7 +1,7 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
 // Address both used by the US and Canada
-public class AddressNA implements Address {
+public class AddressUS implements AddressInterface {
 	
 	
 	private String street;
@@ -10,7 +10,7 @@ public class AddressNA implements Address {
 	private String zipCode;
 	private String state;
 	
-	public AddressNA(String streetNumber, String street, String city, String state, String zipCode) {
+	public AddressUS(String streetNumber, String street, String city, String state, String zipCode) {
 		this.streetNumber = streetNumber;		
 		this.street = street;
 		this.city = city;
@@ -30,6 +30,8 @@ public class AddressNA implements Address {
 		builder.append(state);
 		builder.append(" ");
 		builder.append(zipCode);
+		builder.append(newline);
+		builder.append("USA");
 		return builder.toString();
 
 	}

@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressFR implements Address {
+public class AddressFR implements AddressInterface {
 	private String street;
 	private String streetNumber;
 	private String city;
@@ -23,6 +23,8 @@ public class AddressFR implements Address {
 		builder.append(zipCode);
 		builder.append(" ");
 		builder.append(city);
+		builder.append(newline);
+		builder.append("FRANCE");
 		return builder.toString();
 	}
 }

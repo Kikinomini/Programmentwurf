@@ -1,17 +1,20 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressUK implements AddressInterface {
+// Address both used by the US and Canada
+public class AddressCA implements AddressInterface {
+	
 	
 	private String street;
 	private String streetNumber;
 	private String city;
 	private String zipCode;
-
+	private String state;
 	
-	public AddressUK(String streetNumber, String street, String city, String zipCode) {
+	public AddressCA(String streetNumber, String street, String city, String state, String zipCode) {
 		this.streetNumber = streetNumber;		
 		this.street = street;
 		this.city = city;
+		this.state = state;
 		this.zipCode = zipCode;
 	}
 	
@@ -23,11 +26,13 @@ public class AddressUK implements AddressInterface {
 		builder.append(street);
 		builder.append(newline);
 		builder.append(city);
-		builder.append(newline);
+		builder.append(", ");
+		builder.append(state);
+		builder.append(" ");
 		builder.append(zipCode);
 		builder.append(newline);
-		builder.append("United Kingdom");
-
+		builder.append("Canada");
 		return builder.toString();
+
 	}
-}
+}	

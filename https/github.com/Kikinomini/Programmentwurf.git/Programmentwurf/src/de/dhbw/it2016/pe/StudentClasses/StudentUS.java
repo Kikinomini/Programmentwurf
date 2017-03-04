@@ -3,12 +3,12 @@ package de.dhbw.it2016.pe.StudentClasses;
 import java.util.List;
 
 import de.dhbw.it2016.pe.AbstractStudentFactory;
-import de.dhbw.it2016.pe.AddressClasses.AddressNA;
+import de.dhbw.it2016.pe.AddressClasses.AddressUS;
 import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberNANP;
 
 public class StudentUS extends Student implements AbstractStudentFactory {
 
-	protected AddressNA address;
+	protected AddressUS address;
 	protected PhoneNumberNANP phone;
 	
 	public StudentUS(List<String> data) {
@@ -33,8 +33,8 @@ public class StudentUS extends Student implements AbstractStudentFactory {
 	}
 
 	@Override
-	public AddressNA createAddress(List<String> data) {
-		return new AddressNA(data.get(4), data.get(3), data.get(5),
+	public AddressUS createAddress(List<String> data) {
+		return new AddressUS(data.get(4), data.get(3), data.get(5),
 				data.get(10), data.get(6));
 	}
 
