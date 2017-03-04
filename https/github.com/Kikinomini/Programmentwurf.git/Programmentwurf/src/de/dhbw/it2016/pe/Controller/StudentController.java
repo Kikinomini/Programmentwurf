@@ -7,10 +7,7 @@ import java.util.List;
 import de.dhbw.it2016.pe.AbstractStudentFactory;
 import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.MainAction;
-import de.dhbw.it2016.pe.StudentClasses.StudentDE;
-import de.dhbw.it2016.pe.StudentClasses.StudentFN;
-import de.dhbw.it2016.pe.StudentClasses.StudentGB;
-import de.dhbw.it2016.pe.StudentClasses.StudentUS;
+import de.dhbw.it2016.pe.StudentClasses.*;
 import de.dhbw.it2016.pe.View.StudentenVerwaltungView;
 
 public class StudentController {
@@ -25,28 +22,34 @@ public class StudentController {
 	
 	public AbstractStudentFactory erzeugeStudent(List<String> data)
 	{
+		AbstractStudentFactory student;
 		String country = data.get(7);
-		if(country.equals("DE"))
+		
+		switch (country) 
 		{
-			AbstractStudentFactory student = new StudentDE(data);
-			return student;
+			case "CN":
+				student = new StudentCN(data);
+				return student;
+				
+			case "DE":
+				student = new StudentDE(data);
+				return student;
+				
+			case "FN":
+				student = new StudentFN(data);
+				return student;
+				
+			case "GB":
+				student = new StudentGB(data);
+				return student;
+				
+			case "US":
+				student = new StudentUS(data);
+				return student;
+			
+			default:
+				return null;
 		}
-		else if(country.equals("FN"))
-		{
-			AbstractStudentFactory student = new StudentFN(data);
-			return student;
-		}
-		else if(country.equals("US"))
-		{
-			AbstractStudentFactory student = new StudentUS(data);
-			return student;
-		}
-		else if(country.equals("GB"))
-		{
-			AbstractStudentFactory student = new StudentGB(data);
-			return student;
-		}
-		return null;
 	}
 	
 	public void closeView()
@@ -59,7 +62,7 @@ public class StudentController {
 		view.welcomeView();
 	}
 	
-	public void programmLogik(BufferedReader cin) throws IOException
+	public void programmLogik(BufferedReader cin) throws IOException, NullPointerException
 	{
 		String id = null;
 		AbstractStudentFactory studFactory = null;
