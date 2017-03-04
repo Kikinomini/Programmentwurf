@@ -6,7 +6,7 @@ package de.dhbw.it2016.pe.PhoneNumberClasses;
  * and the U.S. territories. Not all North American countries participate in the NANP. (Wikipedia)
  */
 
-public class PhoneNumberNANP implements PhoneNumber {
+public class PhoneNumberNANP implements PhoneNumberInterface {
 
 	private String areaCode;
 	private String subscriber;

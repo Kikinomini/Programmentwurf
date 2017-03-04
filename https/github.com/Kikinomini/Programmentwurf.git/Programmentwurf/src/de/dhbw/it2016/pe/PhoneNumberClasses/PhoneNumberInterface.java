@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.PhoneNumberClasses;
 
-public interface PhoneNumber {
+public interface PhoneNumberInterface {
 	
 	public String formatNational();
 	public String formatInternational();

@@ -42,7 +42,7 @@ public class StudentController {
 				
 			case "FR":
 				student = new StudentFR(data);
-				return student;
+				return student; //TEST
 				
 			case "UK":
 				student = new StudentUK(data);

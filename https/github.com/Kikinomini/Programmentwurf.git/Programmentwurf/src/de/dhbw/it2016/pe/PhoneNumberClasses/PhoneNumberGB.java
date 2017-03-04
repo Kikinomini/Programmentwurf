@@ -1,15 +1,16 @@
 package de.dhbw.it2016.pe.PhoneNumberClasses;
 
-public class PhoneNumberFR implements PhoneNumberInterface {
-
+public class PhoneNumberGB implements PhoneNumberInterface {
+	
 	private String areaCode;
 	private String subscriber;
 
-	public PhoneNumberFR(String areaCode, String subscriber) {
+	public PhoneNumberGB(String areaCode, String subscriber) {
 		this.areaCode = areaCode;
 		this.subscriber = subscriber;
 	}
 	
+
 	@Override
 	public String formatNational() {
 		StringBuilder builder = new StringBuilder();
@@ -22,10 +23,11 @@ public class PhoneNumberFR implements PhoneNumberInterface {
 	@Override
 	public String formatInternational() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("+33-");
+		builder.append("+44-");
 		builder.append(areaCode.substring(1));
 		builder.append("-");
 		builder.append(subscriber);
 		return builder.toString();
 	}
+
 }
