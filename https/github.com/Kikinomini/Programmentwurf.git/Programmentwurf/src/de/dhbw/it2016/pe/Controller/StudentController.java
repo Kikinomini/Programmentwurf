@@ -105,22 +105,34 @@ public class StudentController {
 			// TODO: For all other cases, Exceptions must be handled! 
 			
 			case DisplayInfo:
-				if (studFactory == null) System.out.println("Please search for a student first!");
+				if (studFactory == null) {
+					System.out.println("Please search for a student first!");
+					continue;
+				}
 				view.printParameter(studFactory.info());
 				continue;
 				
 			case DisplayAddress:
-				if (studFactory == null) System.out.println("Please search for a student first!");
+				if (studFactory == null) {
+					System.out.println("Please search for a student first!");
+					continue;
+				}
 				view.printParameter(studFactory.address());
 				continue;
 				
 			case DisplayPhoneNumber:
-				if (studFactory == null) System.out.println("Please search for a student first!");
+				if (studFactory == null) {
+					System.out.println("Please search for a student first!");
+					continue;
+				}
 				view.printParameter(studFactory.phone());
 				continue;
 				
 			case DisplayIntlPhoneNumber:
-				if (studFactory == null) System.out.println("Please search for a student first!");
+				if (studFactory == null) {
+					System.out.println("Please search for a student first!");
+					continue;
+				}
 				view.printParameter(studFactory.intlPhone());
 				continue;
 				
