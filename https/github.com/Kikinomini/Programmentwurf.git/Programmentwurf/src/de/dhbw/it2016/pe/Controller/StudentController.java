@@ -40,8 +40,8 @@ public class StudentController {
 				student = new StudentFN(data);
 				return student;
 				
-			case "GB":
-				student = new StudentGB(data);
+			case "UK":
+				student = new StudentUK(data);
 				return student;
 				
 			case "US":
