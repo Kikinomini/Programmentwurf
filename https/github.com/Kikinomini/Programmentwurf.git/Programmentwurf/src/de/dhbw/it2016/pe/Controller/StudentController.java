@@ -40,6 +40,10 @@ public class StudentController {
 				student = new StudentFN(data);
 				return student;
 				
+			case "FR":
+				student = new StudentFR(data);
+				return student;
+				
 			case "UK":
 				student = new StudentUK(data);
 				return student;
