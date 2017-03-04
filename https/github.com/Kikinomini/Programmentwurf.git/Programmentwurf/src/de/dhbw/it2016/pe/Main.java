@@ -12,7 +12,7 @@ public class Main {
 		StudentController sController = new StudentController();
 	
 		sController.welcomeView();
-		sController.programmLogik(cin);
+		sController.manageMainMenu(cin);
 		sController.closeView();
 
 		cin.close();

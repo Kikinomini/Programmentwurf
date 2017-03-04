@@ -7,6 +7,7 @@ import java.util.List;
 import de.dhbw.it2016.pe.AbstractStudentFactory;
 import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.MainAction;
+import de.dhbw.it2016.pe.Exceptions.*;
 import de.dhbw.it2016.pe.StudentClasses.*;
 import de.dhbw.it2016.pe.View.StudentenVerwaltungView;
 
@@ -20,7 +21,7 @@ public class StudentController {
 		return data;
 	}
 	
-	public AbstractStudentFactory createStudent(List<String> data)
+	public AbstractStudentFactory createStudent(List<String> data) throws InvalidCountryCodeException
 	{
 		AbstractStudentFactory student;
 		String country = data.get(7);
@@ -48,7 +49,7 @@ public class StudentController {
 				return student;
 			
 			default:
-				return null;
+				throw new InvalidCountryCodeException();
 		}
 	}
 	
@@ -62,7 +63,7 @@ public class StudentController {
 		view.welcomeView();
 	}
 	
-	public void programmLogik(BufferedReader cin) throws IOException, NullPointerException
+	public void manageMainMenu(BufferedReader cin) throws IOException, NullPointerException
 	{
 		String id = null;
 		AbstractStudentFactory studFactory = null;
@@ -84,28 +85,42 @@ public class StudentController {
 			switch (action) 
 			{
 			case SearchStudentByID:
+				
+				// TODO: Throws exception when there is an irregular country code.
+				
 				view.enterId();
 				id = cin.readLine();
 				List<String> data = readCountryFromStore(id);
-				studFactory =  createStudent(data);
-				view.studentSelect(studFactory.info());
+				try 
+				{
+					studFactory =  createStudent(data);
+					view.studentSuccessfullySelected(studFactory.info());
+				}
+				catch (InvalidCountryCodeException e) 
+				{
+					System.out.println("We're sorry, but that student's country is not recognized by our servers.");
+				}
 				continue;
 				
 			// TODO: For all other cases, Exceptions must be handled! 
-				
+			
 			case DisplayInfo:
+				if (studFactory == null) System.out.println("Please search for a student first!");
 				view.printParameter(studFactory.info());
 				continue;
 				
 			case DisplayAddress:
+				if (studFactory == null) System.out.println("Please search for a student first!");
 				view.printParameter(studFactory.address());
 				continue;
 				
 			case DisplayPhoneNumber:
+				if (studFactory == null) System.out.println("Please search for a student first!");
 				view.printParameter(studFactory.phone());
 				continue;
 				
 			case DisplayIntlPhoneNumber:
+				if (studFactory == null) System.out.println("Please search for a student first!");
 				view.printParameter(studFactory.intlPhone());
 				continue;
 				

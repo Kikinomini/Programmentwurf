@@ -33,7 +33,7 @@ public class StudentenVerwaltungView {
 		System.out.println("Welcome to the DHBW Student Management System!");
 	}
 
-	public void studentSelect(String studentInfo) {
+	public void studentSuccessfullySelected(String studentInfo) {
 		System.out.println("Successfully selected " + studentInfo);
 		
 	}
