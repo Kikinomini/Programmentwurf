@@ -1,0 +1,45 @@
+package de.dhbw.it2016.pe.StudentClasses;
+
+import java.util.List;
+
+import de.dhbw.it2016.pe.AbstractStudentFactory;
+import de.dhbw.it2016.pe.AddressClasses.AddressNA;
+import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberNANP;
+
+public class StudentCN extends Student implements AbstractStudentFactory {
+	
+	protected AddressNA address;
+	protected PhoneNumberNANP phone;
+	
+	public StudentCN(List<String> data) {
+		super();
+		firstName = data.get(1);
+		lastName = data.get(2);
+		address = createAddress(data);
+		phone = createPhoneNumber(data);
+		id = data.get(0);
+	}
+
+	public String address() {
+		return address.formatAddress();
+	}
+
+	public String phone() {
+		return phone.formatNational();
+	}
+	
+	public String intlPhone() {
+		return phone.formatInternational();
+	}
+
+	@Override
+	public AddressNA createAddress(List<String> data) {
+		return new AddressNA(data.get(4), data.get(3), data.get(5),
+				data.get(10), data.get(6));
+	}
+
+	@Override
+	public PhoneNumberNANP createPhoneNumber(List<String> data) {
+		return new PhoneNumberNANP(data.get(8), data.get(9));
+	}
+}

@@ -20,7 +20,7 @@ public class StudentController {
 		return data;
 	}
 	
-	public AbstractStudentFactory erzeugeStudent(List<String> data)
+	public AbstractStudentFactory createStudent(List<String> data)
 	{
 		AbstractStudentFactory student;
 		String country = data.get(7);
@@ -87,7 +87,7 @@ public class StudentController {
 				view.enterId();
 				id = cin.readLine();
 				List<String> data = readCountryFromStore(id);
-				studFactory =  erzeugeStudent(data);
+				studFactory =  createStudent(data);
 				view.studentSelect(studFactory.info());
 				continue;
 				

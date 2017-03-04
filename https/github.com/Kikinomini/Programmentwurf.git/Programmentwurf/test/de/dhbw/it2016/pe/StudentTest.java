@@ -16,7 +16,7 @@ public class StudentTest {
 	{
 		StudentController sController = new StudentController();
 		List<String> data = sController.readCountryFromStore("6");
-		StudentDE cloneStudent = (StudentDE) sController.erzeugeStudent(data);
+		StudentDE cloneStudent = (StudentDE) sController.createStudent(data);
 		
 		String firstName = cloneStudent.getFirstName();
 		assertEquals("Sarah", firstName);
