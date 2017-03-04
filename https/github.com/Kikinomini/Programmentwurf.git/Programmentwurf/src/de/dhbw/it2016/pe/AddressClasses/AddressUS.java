@@ -31,7 +31,7 @@ public class AddressUS implements AddressInterface {
 		builder.append(" ");
 		builder.append(zipCode);
 		builder.append(newline);
-		builder.append("USA");
+		builder.append("United States");
 		return builder.toString();
 
 	}
