@@ -8,7 +8,7 @@ import de.dhbw.it2016.pe.PhoneNumberClasses.*;
 
 public class PhoneNumberTest {
 	@Test
-	public void testFormat() {
+	public void testFormatNationalGermany() {
 		PhoneNumberDE phone = new PhoneNumberDE("01234", "56789");
 		String expected = "01234-56789";
 		assertEquals(expected, phone.formatNational());
@@ -27,5 +27,57 @@ public class PhoneNumberTest {
 		PhoneNumberFN phone = new PhoneNumberFN("09", "458580");
 		String expected = "+358-9-458580";
 		assertEquals(expected, phone.formatInternational());
+	}
+	
+	@Test
+	public void testFormatNationalFinland() {
+		PhoneNumberFN phone = new PhoneNumberFN("09", "458580");
+		String expected = "09-458580";
+		assertEquals(expected, phone.formatNational());
+	}
+	
+	@Test
+	public void testFormatInternationalFrance() 
+	{
+		PhoneNumberFR phone = new PhoneNumberFR("01", "369852");
+		String expected = "+33-1-369852";
+		assertEquals(expected, phone.formatInternational());
+	}
+	
+	@Test
+	public void testFormatNationalFrance() {
+		PhoneNumberFR phone = new PhoneNumberFR("01", "369852");
+		String expected = "01-369852";
+		assertEquals(expected, phone.formatNational());
+	}
+	
+	@Test
+	public void testFormatInternationalUK() 
+	{
+		PhoneNumberUK phone = new PhoneNumberUK("0121", "147852");
+		String expected = "+44-121-147852";
+		assertEquals(expected, phone.formatInternational());
+	}
+	
+	@Test
+	public void testFormatNationalUK() {
+		PhoneNumberUK phone = new PhoneNumberUK("0121", "147852");
+		String expected = "0121-147852";
+		assertEquals(expected, phone.formatNational());
+	}
+	
+	@Test
+	public void testFormatInternationalUS() 
+	{
+		PhoneNumberNANP phone = new PhoneNumberNANP("212-423", "1753");
+		String expected = "+1-212-423-1753";
+		assertEquals(expected, phone.formatInternational());
+	}
+	
+	@Test
+	public void testFormatNationalUS() {
+		PhoneNumberNANP phone = new PhoneNumberNANP("212-423", "1753");
+		String expected = "212-423-1753";
+		assertEquals(expected, phone.formatNational());
 	}
 }
