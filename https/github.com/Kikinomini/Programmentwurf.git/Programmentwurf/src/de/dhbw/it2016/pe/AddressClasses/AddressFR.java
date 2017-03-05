@@ -18,7 +18,7 @@ public class AddressFR implements AddressInterface {
 		StringBuilder builder = new StringBuilder();
 		builder.append(streetNumber);
 		builder.append(" ");
-		builder.append(street.toUpperCase());
+		builder.append(street);
 		builder.append(newline);
 		builder.append(zipCode);
 		builder.append(" ");
