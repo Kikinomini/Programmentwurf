@@ -15,7 +15,5 @@ public abstract class Student {
 		return lastName;
 	}
 
-	public String info() {
-		return id + ": " + firstName + " " + lastName;
-	}
+	public abstract String getCompleteName();
 }

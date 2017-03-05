@@ -42,4 +42,10 @@ public class StudentCN extends Student implements AbstractStudentFactory {
 	public PhoneNumberNANP createPhoneNumber(List<String> data) {
 		return new PhoneNumberNANP(data.get(8), data.get(9));
 	}
+	
+	@Override
+	public String getCompleteName() 
+	{
+		return id + ": " + firstName + " " + lastName;		
+	}
 }

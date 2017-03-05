@@ -42,4 +42,10 @@ public class StudentFN extends Student implements AbstractStudentFactory {
 		return new AddressFN(data.get(3), data.get(4), data.get(5),
 				data.get(6));
 	}
+	
+	@Override
+	public String getCompleteName() 
+	{
+		return id + ": " + firstName + " " + lastName;		
+	}
 }

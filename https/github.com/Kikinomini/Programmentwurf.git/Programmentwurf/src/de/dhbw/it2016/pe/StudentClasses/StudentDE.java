@@ -42,5 +42,11 @@ public class StudentDE extends Student implements AbstractStudentFactory{
 		return new AddressDE(data.get(3), data.get(4), data.get(5),
 				data.get(6));
 	}
+	
+	@Override
+	public String getCompleteName() 
+	{
+		return id + ": " + firstName + " " + lastName;		
+	}
 
 }

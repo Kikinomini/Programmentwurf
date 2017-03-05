@@ -42,4 +42,10 @@ public class StudentUK extends Student implements AbstractStudentFactory {
 	public PhoneNumberUK createPhoneNumber(List<String> data) {
 		return new PhoneNumberUK(data.get(8), data.get(9));
 	}
+	
+	@Override
+	public String getCompleteName() 
+	{
+		return id + ": " + firstName + " " + lastName;		
+	}
 }

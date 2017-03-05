@@ -51,6 +51,10 @@ public class StudentController {
 			case "US":
 				student = new StudentUS(data);
 				return student;
+				
+			case "ZH":
+				student = new StudentZH(data);
+				return student;
 			
 			default:
 				throw new InvalidCountryCodeException();
@@ -98,7 +102,7 @@ public class StudentController {
 				try 
 				{
 					studFactory =  createStudent(data);
-					view.studentSuccessfullySelected(studFactory.info());
+					view.studentSuccessfullySelected(studFactory.getCompleteName());
 				}
 				catch (InvalidCountryCodeException e) 
 				{
@@ -113,7 +117,7 @@ public class StudentController {
 					System.out.println("Please search for a student first!");
 					continue;
 				}
-				view.printParameter(studFactory.info());
+				view.printParameter(studFactory.getCompleteName());
 				continue;
 				
 			case DisplayAddress:

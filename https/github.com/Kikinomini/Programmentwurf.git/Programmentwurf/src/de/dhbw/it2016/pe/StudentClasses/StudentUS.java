@@ -8,7 +8,7 @@ import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberNANP;
 
 public class StudentUS extends Student implements AbstractStudentFactory {
 
-	protected AddressUS address; //TEST
+	protected AddressUS address;
 	protected PhoneNumberNANP phone;
 	
 	public StudentUS(List<String> data) {
@@ -41,5 +41,11 @@ public class StudentUS extends Student implements AbstractStudentFactory {
 	@Override
 	public PhoneNumberNANP createPhoneNumber(List<String> data) {
 		return new PhoneNumberNANP(data.get(8), data.get(9));
+	}
+	
+	@Override
+	public String getCompleteName() 
+	{
+		return id + ": " + firstName + " " + lastName;		
 	}
 }

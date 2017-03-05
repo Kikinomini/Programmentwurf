@@ -1,0 +1,8 @@
+Mandatory steps for new country
+
+1) Create new class in folder de.dhbw.it.2016.pe.StudentClass
+   Name: Student<CountryCode>.java
+   Extends Student
+   Implements AbstractStudentFactory
+   
+2) 
