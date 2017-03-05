@@ -50,6 +50,6 @@ public class StudentZH extends Student implements AbstractStudentFactory {
 		/* In the People's Republic of China, the surname precedes the first name(s)
 		 *  Hence, this method has to be overwritten*/
 		
-		return super.lastName + " " + super.firstName;
+		return id + ": " + super.lastName + " " + super.firstName;
 	}
 }
