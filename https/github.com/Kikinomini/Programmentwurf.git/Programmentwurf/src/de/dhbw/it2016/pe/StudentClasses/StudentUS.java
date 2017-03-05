@@ -8,7 +8,7 @@ import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumberNANP;
 
 public class StudentUS extends Student implements AbstractStudentFactory {
 
-	protected AddressUS address;
+	protected AddressUS address; //TEST
 	protected PhoneNumberNANP phone;
 	
 	public StudentUS(List<String> data) {
