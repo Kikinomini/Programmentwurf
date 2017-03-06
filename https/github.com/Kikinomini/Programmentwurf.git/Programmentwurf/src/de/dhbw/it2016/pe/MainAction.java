@@ -8,7 +8,7 @@ public enum MainAction
 	DisplayAddress,
 	DisplayPhoneNumber,
 	DisplayIntlPhoneNumber,
-	RESERVED_FOR_FURTHER_PURPOSES_6,
+	Back,
 	RESERVED_FOR_FURTHER_PURPOSES_7,
 	ExitProgram
 }
