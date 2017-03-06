@@ -1,24 +1,13 @@
 package de.dhbw.it2016.pe.PhoneNumberClasses;
 
-public class PhoneNumberUK implements PhoneNumberInterface {
+public class PhoneNumberUK extends PhoneNumber implements PhoneNumberInterface {
 	
-	private String areaCode;
-	private String subscriber;
 
 	public PhoneNumberUK(String areaCode, String subscriber) {
 		this.areaCode = areaCode;
 		this.subscriber = subscriber;
 	}
 	
-
-	@Override
-	public String formatNational() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(areaCode);
-		builder.append("-");
-		builder.append(subscriber);
-		return builder.toString();
-	}
 
 	@Override
 	public String formatInternational() {

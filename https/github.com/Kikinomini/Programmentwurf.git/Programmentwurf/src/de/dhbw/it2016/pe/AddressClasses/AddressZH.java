@@ -1,12 +1,8 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
 // Address both used by the US and Canada
-public class AddressZH implements AddressInterface {
+public class AddressZH extends Address implements AddressInterface {
 	
-	private String street;
-	private String streetNumber;
-	private String city;
-	private String zipCode;
 	private String province;
 	
 	public AddressZH(String street, String streetNumber, String city, String province, String zipCode) {

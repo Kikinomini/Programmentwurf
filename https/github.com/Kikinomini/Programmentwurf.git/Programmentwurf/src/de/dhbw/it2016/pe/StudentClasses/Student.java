@@ -16,4 +16,10 @@ public abstract class Student {
 	}
 
 	public abstract String getCompleteName();
+	
+	public abstract String address();
+
+	public abstract String phone();
+
+	public abstract String intlPhone();
 }

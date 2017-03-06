@@ -1,10 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressFR implements AddressInterface {
-	private String street;
-	private String streetNumber;
-	private String city;
-	private String zipCode;
+public class AddressFR extends Address implements AddressInterface {
 	
 	public AddressFR(String street, String streetNumber, String city, String zipCode) {
 		this.street = street.toUpperCase();

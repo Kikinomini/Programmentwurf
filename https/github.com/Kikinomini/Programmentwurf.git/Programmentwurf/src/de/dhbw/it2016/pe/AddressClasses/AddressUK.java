@@ -1,12 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressUK implements AddressInterface {
-	
-	private String street;
-	private String streetNumber;
-	private String city;
-	private String zipCode;
-
+public class AddressUK extends Address implements AddressInterface {
 	
 	public AddressUK(String streetNumber, String street, String city, String zipCode) {
 		this.streetNumber = streetNumber;		
