@@ -88,6 +88,7 @@ public class StudentController {
 			catch (NumberFormatException e) 
 			{
 				view.invalidFormat();
+				//TODO
 				continue;
 			}
 			catch(ArrayIndexOutOfBoundsException e)
