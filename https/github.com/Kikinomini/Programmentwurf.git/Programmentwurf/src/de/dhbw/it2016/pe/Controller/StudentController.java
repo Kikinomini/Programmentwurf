@@ -73,26 +73,75 @@ public class StudentController {
 	
 	public void manageMainMenu(BufferedReader cin) throws IOException, NullPointerException
 	{
-		String id = null;
-		AbstractStudentFactory studFactory = null;
-		MainAction action;
-		while (true) {
-						
+		boolean closeProgramm = false;
+		do {
+			view.mainMenu();		
+			MainAction action = null;
+			String input = cin.readLine();
+			String id = null;
+			AbstractStudentFactory studFactory = null;
+			
 			try {
-				this.mainMenu(cin);
-			} catch (NumberFormatException e1) {
+				int tsAction = Integer.parseInt(input);
+				action = MainAction.values()[tsAction];
+			} 
+			catch (NumberFormatException e) 
+			{
 				view.invalidFormat();
 				continue;
-			} catch (InvalidCountryCodeException e1) {
-				view.invalidCountryNumber();
-				continue;
-			} catch (InvalidInputNumberException e1) {
-				view.InvalidInputNumberException();
+			}
+			catch(ArrayIndexOutOfBoundsException e)
+			{
+				view.invalidInputNumber();
 				continue;
 			}
 			
+			switch (action) 
+			{
+			case SearchStudentByID:
+				boolean studentSelected = false;
+				do
+				{
+					view.enterId();
+					id = cin.readLine();
+					List<String> data = readCountryFromStore(id);
+					if(data.isEmpty())
+					{
+						view.invalidStudentId();
+						continue;
+					}
+					try 
+					{
+						studFactory =  createStudent(data);
+						view.studentSuccessfullySelected(studFactory.getCompleteName());
+						studentSelected = true;
+					}
+					catch (InvalidCountryCodeException e) 
+					{
+						view.invalidCountryNumber();
+						continue;
+					}
+				}while(studentSelected == false);
+				try {
+					this.subMenu(cin, studFactory, studentSelected, closeProgramm, action);
+				} catch (InvalidInputNumberException e) {
+					view.invalidInputNumber();
+				}	
+				break;
+			case ExitProgram:
+				closeProgramm = true;
+				break;
+			default:
+				view.invalidInputNumber();
+				continue;
+			}
+		}while(closeProgramm == false);	
+	}
+	
+	private void subMenu(BufferedReader cin, AbstractStudentFactory studFactory, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 
+	{
+		do{
 			view.menuView();
-			
 			String input = cin.readLine();
 
 			try {
@@ -102,143 +151,36 @@ public class StudentController {
 				view.invalidFormat();
 				continue;
 			}
+			catch(ArrayIndexOutOfBoundsException e)
+			{
+				view.invalidFormat();
+				continue;
+			}
 			
 			switch (action) 
 			{
-			case SearchStudentByID:				
-				view.enterId();
-				id = cin.readLine();
-				List<String> data = readCountryFromStore(id);
-				try 
-				{
-					studFactory =  createStudent(data);
-					view.studentSuccessfullySelected(studFactory.getCompleteName());
-				}
-				catch (InvalidCountryCodeException e) 
-				{
-					System.out.println("We're sorry, but that student's country is not recognized by our servers.");
-				}
-				continue;
-			
-			case DisplayInfo:
-				if (studFactory == null) {
-					System.out.println("Please search for a student first!");
+				case DisplayInfo:
+					view.printParameter(studFactory.getCompleteName());
 					continue;
-			
-				}
-				view.printParameter(studFactory.getCompleteName());
-				continue;
-				
-			case DisplayAddress:
-				if (studFactory == null) {
-					System.out.println("Please search for a student first!");
+				case DisplayAddress:
+					view.printParameter(studFactory.address());	
 					continue;
-				}
-				view.printParameter(studFactory.address());
-				continue;
-				
-			case DisplayPhoneNumber:
-				if (studFactory == null) {
-					System.out.println("Please search for a student first!");
+				case DisplayPhoneNumber:
+					view.printParameter(studFactory.phone());
 					continue;
-				}
-				view.printParameter(studFactory.phone());
-				continue;
-				
-			case DisplayIntlPhoneNumber:
-				if (studFactory == null) {
-					System.out.println("Please search for a student first!");
+				case DisplayIntlPhoneNumber:
+					view.printParameter(studFactory.intlPhone());
 					continue;
-				}
-				view.printParameter(studFactory.intlPhone());
-				continue;
-				
-			case ExitProgram:
-				break;
-			
-			case ErrorCase:
-			default:
-				view.invalidInputNumber();
-				continue;
+				case ExitProgram:
+					closeProgramm = true;
+					break;
+				case Back:
+					studentSelected = false;
+					break;
+				default:
+					view.invalidFormat();
+					break;
 			}
-			
-			break;
-		}
-	}
-	
-	private void mainMenu(BufferedReader cin) throws IOException, NumberFormatException, 
-								InvalidCountryCodeException, InvalidInputNumberException
-	{
-		view.mainMenu();		
-		MainAction action;
-		String input = cin.readLine();
-		String id = null;
-		AbstractStudentFactory studFactory = null;
-		
-		try {
-			int tsAction = Integer.parseInt(input);
-			action = MainAction.values()[tsAction];
-		} 
-		catch (NumberFormatException e) 
-		{
-			throw new NumberFormatException();
-		}
-		
-		switch (action) 
-		{
-		case SearchStudentByID:
-			
-			view.enterId();
-			id = cin.readLine();
-			List<String> data = readCountryFromStore(id);
-			try 
-			{
-				studFactory =  createStudent(data);
-				view.studentSuccessfullySelected(studFactory.getCompleteName());
-			}
-			catch (InvalidCountryCodeException e) 
-			{
-				throw new InvalidCountryCodeException();
-			}
-			
-			subMenu(cin, studFactory);
-			
-		case ExitProgram:
-			break;
-		default:
-			throw new InvalidInputNumberException();
-		}
-		
-	}
-	
-	private void subMenu(BufferedReader cin, AbstractStudentFactory studFactory) throws IOException, NumberFormatException, InvalidInputNumberException
-	{
-		view.menuView();
-		String input = cin.readLine();
-		MainAction action;
-
-		try {
-			int tsAction = Integer.parseInt(input);
-			action = MainAction.values()[tsAction];
-		} catch (NumberFormatException e) {
-			throw new NumberFormatException();
-		}
-		
-		switch (action) 
-		{
-			case DisplayInfo:
-				view.printParameter(studFactory.getCompleteName());
-			case DisplayAddress:
-				view.printParameter(studFactory.address());			
-			case DisplayPhoneNumber:
-				view.printParameter(studFactory.phone());
-			case DisplayIntlPhoneNumber:
-				view.printParameter(studFactory.intlPhone());
-			case ExitProgram:
-				break;
-			case ErrorCase:
-			default:
-				throw new InvalidInputNumberException();
-		}
+		}while(studentSelected == true && closeProgramm == false);
 	}
 }
