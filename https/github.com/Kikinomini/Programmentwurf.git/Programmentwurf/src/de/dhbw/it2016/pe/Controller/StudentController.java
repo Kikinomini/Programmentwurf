@@ -194,7 +194,7 @@ public class StudentController {
 			try 
 			{
 				studFactory =  createStudent(data);
-				view.studentSuccessfullySelected(studFactory.info());
+				view.studentSuccessfullySelected(studFactory.getCompleteName());
 			}
 			catch (InvalidCountryCodeException e) 
 			{
@@ -227,7 +227,7 @@ public class StudentController {
 		switch (action) 
 		{
 			case DisplayInfo:
-				view.printParameter(studFactory.info());
+				view.printParameter(studFactory.getCompleteName());
 			case DisplayAddress:
 				view.printParameter(studFactory.address());			
 			case DisplayPhoneNumber:
