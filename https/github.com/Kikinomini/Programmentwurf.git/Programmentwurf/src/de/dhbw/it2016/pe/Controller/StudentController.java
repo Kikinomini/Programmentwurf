@@ -77,9 +77,22 @@ public class StudentController {
 		AbstractStudentFactory studFactory = null;
 		MainAction action;
 		while (true) {
-
+						
+			try {
+				this.mainMenu(cin);
+			} catch (NumberFormatException e1) {
+				view.invalidFormat();
+				continue;
+			} catch (InvalidCountryCodeException e1) {
+				view.invalidCountryNumber();
+				continue;
+			} catch (InvalidInputNumberException e1) {
+				view.InvalidInputNumberException();
+				continue;
+			}
+			
 			view.menuView();
-
+			
 			String input = cin.readLine();
 
 			try {
@@ -89,13 +102,10 @@ public class StudentController {
 				view.invalidFormat();
 				continue;
 			}
-
+			
 			switch (action) 
 			{
-			case SearchStudentByID:
-				
-				// TODO: Throws exception when there is an irregular country code.
-				
+			case SearchStudentByID:				
 				view.enterId();
 				id = cin.readLine();
 				List<String> data = readCountryFromStore(id);
@@ -109,13 +119,12 @@ public class StudentController {
 					System.out.println("We're sorry, but that student's country is not recognized by our servers.");
 				}
 				continue;
-				
-			// TODO: For all other cases, Exceptions must be handled! 
 			
 			case DisplayInfo:
 				if (studFactory == null) {
 					System.out.println("Please search for a student first!");
 					continue;
+			
 				}
 				view.printParameter(studFactory.getCompleteName());
 				continue;
@@ -156,5 +165,80 @@ public class StudentController {
 			break;
 		}
 	}
+	
+	private void mainMenu(BufferedReader cin) throws IOException, NumberFormatException, 
+								InvalidCountryCodeException, InvalidInputNumberException
+	{
+		view.mainMenu();		
+		MainAction action;
+		String input = cin.readLine();
+		String id = null;
+		AbstractStudentFactory studFactory = null;
+		
+		try {
+			int tsAction = Integer.parseInt(input);
+			action = MainAction.values()[tsAction];
+		} 
+		catch (NumberFormatException e) 
+		{
+			throw new NumberFormatException();
+		}
+		
+		switch (action) 
+		{
+		case SearchStudentByID:
+			
+			view.enterId();
+			id = cin.readLine();
+			List<String> data = readCountryFromStore(id);
+			try 
+			{
+				studFactory =  createStudent(data);
+				view.studentSuccessfullySelected(studFactory.info());
+			}
+			catch (InvalidCountryCodeException e) 
+			{
+				throw new InvalidCountryCodeException();
+			}
+			
+			subMenu(cin, studFactory);
+			
+		case ExitProgram:
+			break;
+		default:
+			throw new InvalidInputNumberException();
+		}
+		
+	}
+	
+	private void subMenu(BufferedReader cin, AbstractStudentFactory studFactory) throws IOException, NumberFormatException, InvalidInputNumberException
+	{
+		view.menuView();
+		String input = cin.readLine();
+		MainAction action;
 
+		try {
+			int tsAction = Integer.parseInt(input);
+			action = MainAction.values()[tsAction];
+		} catch (NumberFormatException e) {
+			throw new NumberFormatException();
+		}
+		
+		switch (action) 
+		{
+			case DisplayInfo:
+				view.printParameter(studFactory.info());
+			case DisplayAddress:
+				view.printParameter(studFactory.address());			
+			case DisplayPhoneNumber:
+				view.printParameter(studFactory.phone());
+			case DisplayIntlPhoneNumber:
+				view.printParameter(studFactory.intlPhone());
+			case ExitProgram:
+				break;
+			case ErrorCase:
+			default:
+				throw new InvalidInputNumberException();
+		}
+	}
 }
