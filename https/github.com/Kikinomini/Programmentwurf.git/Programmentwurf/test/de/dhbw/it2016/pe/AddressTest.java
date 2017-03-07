@@ -59,7 +59,7 @@ public class AddressTest {
 	
 	@Test
 	public void testFormatCA(){
-		AddressCA address = new AddressCA("1601", "West Broadway", "Vancouver", "British Columbia", "BC V6J 1W9");
+		AddressCN address = new AddressCN("1601", "West Broadway", "Vancouver", "British Columbia", "BC V6J 1W9");
 		String expected = "1601 West Broadway\r\n"
 				+ "Vancouver, British Columbia BC V6J 1W9\r\n"
 				+ "Canada";

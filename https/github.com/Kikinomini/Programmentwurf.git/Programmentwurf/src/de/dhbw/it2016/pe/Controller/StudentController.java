@@ -1,10 +1,3 @@
-/********************************************************************************************
- * 
- * File: StudentController.java
- * Copyright: @2017 Daniel Jaros, Nina Kiwatrowski, Sarah Willibald. All rights reserved. 
- * 
- *******************************************************************************************/
-
 package de.dhbw.it2016.pe.Controller;
 
 import java.io.BufferedReader;
@@ -22,50 +15,10 @@ public class StudentController {
 	
 	private StudentenVerwaltungView view = new StudentenVerwaltungView();
 		
-	public List<String> readCountryFromStore(String id)
+	public List<String> readDataFromStore(String id)
 	{
 		List<String> data = DataStore.read(id);
 		return data;
-	}
-	
-	public AbstractStudentFactory createStudent(List<String> data) throws InvalidCountryCodeException
-	{
-		AbstractStudentFactory student;
-		String country = data.get(7);
-		
-		switch (country) 
-		{
-			case "CN":
-				student = new StudentCN(data);
-				return student;
-				
-			case "DE":
-				student = new StudentDE(data);
-				return student;
-				
-			case "FN":
-				student = new StudentFN(data);
-				return student;
-				
-			case "FR":
-				student = new StudentFR(data);
-				return student; //TEST
-				
-			case "UK":
-				student = new StudentUK(data);
-				return student;
-				
-			case "US":
-				student = new StudentUS(data);
-				return student;
-				
-			case "ZH":
-				student = new StudentZH(data);
-				return student;
-			
-			default:
-				throw new InvalidCountryCodeException();
-		}
 	}
 	
 	public void closeView()
@@ -78,6 +31,7 @@ public class StudentController {
 		view.welcomeView();
 	}
 	
+	@SuppressWarnings("null")
 	public void manageMainMenu(BufferedReader cin) throws IOException, NullPointerException
 	{
 		boolean closeProgramm = false;
@@ -86,7 +40,8 @@ public class StudentController {
 			MainAction action = null;
 			String input = cin.readLine();
 			String id = null;
-			AbstractStudentFactory studFactory = null;
+			AbstractStudentFactory studFactory = new AbstractStudentFactory();
+			Student student = null;
 			
 			try {
 				int tsAction = Integer.parseInt(input);
@@ -95,7 +50,6 @@ public class StudentController {
 			catch (NumberFormatException e) 
 			{
 				view.invalidFormat();
-				//TODO
 				continue;
 			}
 			catch(ArrayIndexOutOfBoundsException e)
@@ -112,7 +66,7 @@ public class StudentController {
 				{
 					view.enterId();
 					id = cin.readLine();
-					List<String> data = readCountryFromStore(id);
+					List<String> data = readDataFromStore(id);
 					if(data.isEmpty())
 					{
 						view.invalidStudentId();
@@ -120,8 +74,8 @@ public class StudentController {
 					}
 					try 
 					{
-						studFactory =  createStudent(data);
-						view.studentSuccessfullySelected(studFactory.getCompleteName());
+						student =  studFactory.createStudent(data);
+						view.studentSuccessfullySelected(student.getCompleteName());
 						studentSelected = true;
 					}
 					catch (InvalidCountryCodeException e) 
@@ -131,7 +85,7 @@ public class StudentController {
 					}
 				}while(studentSelected == false);
 				try {
-					closeProgramm = this.subMenu(cin, studFactory, studentSelected, closeProgramm, action);
+					closeProgramm = this.subMenu(cin, student, studentSelected, closeProgramm, action);
 				} catch (InvalidInputNumberException e) {
 					view.invalidInputNumber();
 				}	
@@ -143,10 +97,10 @@ public class StudentController {
 				view.invalidInputNumber();
 				continue;
 			}
-		} while(closeProgramm == false);	
+		}while(closeProgramm == false);	
 	}
-	
-	private boolean subMenu(BufferedReader cin, AbstractStudentFactory studFactory, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 
+
+	private boolean subMenu(BufferedReader cin, Student student, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 
 	{
 		do{
 			view.menuView();
@@ -168,16 +122,16 @@ public class StudentController {
 			switch (action) 
 			{
 				case DisplayInfo:
-					view.printParameter(studFactory.getCompleteName());
+					view.printParameter(student.getCompleteName());
 					continue;
 				case DisplayAddress:
-					view.printParameter(studFactory.address());	
+					view.printParameter(student.address());	
 					continue;
 				case DisplayPhoneNumber:
-					view.printParameter(studFactory.phone());
+					view.printParameter(student.phone());
 					continue;
 				case DisplayIntlPhoneNumber:
-					view.printParameter(studFactory.intlPhone());
+					view.printParameter(student.intlPhone());
 					continue;
 				case ExitProgram:
 					closeProgramm = true;
