@@ -80,4 +80,19 @@ public class PhoneNumberTest {
 		String expected = "212-423-1753";
 		assertEquals(expected, phone.formatNational());
 	}
+	
+	@Test
+	public void testFormatInternationalZH() 
+	{
+		PhoneNumberZH phone = new PhoneNumberZH("10", "654987");
+		String expected = "+86-10-654987";
+		assertEquals(expected, phone.formatInternational());
+	}
+	
+	@Test
+	public void testFormatNationalZH() {
+		PhoneNumberZH phone = new PhoneNumberZH("10", "654987");
+		String expected = "10-654987";
+		assertEquals(expected, phone.formatNational());
+	}	
 }
