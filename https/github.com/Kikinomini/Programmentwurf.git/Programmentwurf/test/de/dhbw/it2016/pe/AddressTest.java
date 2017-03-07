@@ -19,7 +19,7 @@ public class AddressTest {
 	@Test
 	public void testFormatUK() 
 	{
-		AddressUK address = new AddressUK( "10", "St. Nicholas Street", "Coventry", "CV1 1JD");
+		AddressUK address = new AddressUK( "St. Nicholas Street", "10",  "Coventry", "CV1 1JD");
 		String expected = "10 St. Nicholas Street\r\n"
 				+ "Coventry\r\n"
 				+ "CV1 1JD\r\n" 
@@ -30,7 +30,7 @@ public class AddressTest {
 	@Test
 	public void testFormatUS() 
 	{
-		AddressUS address = new AddressUS( "15", "Spiral Drive", "Florence", "KY", "41042");
+		AddressUS address = new AddressUS( "Spiral Drive", "15", "Florence", "41042", "KY");
 		String expected = "15 Spiral Drive\r\n"
 				+ "Florence, KY 41042\r\n"
 				+ "United States";
@@ -59,10 +59,20 @@ public class AddressTest {
 	
 	@Test
 	public void testFormatCA(){
-		AddressCN address = new AddressCN("1601", "West Broadway", "Vancouver", "British Columbia", "BC V6J 1W9");
+		AddressCN address = new AddressCN("1601", "West Broadway", "Vancouver", "BC V6J 1W9", "British Columbia");
 		String expected = "1601 West Broadway\r\n"
 				+ "Vancouver, British Columbia BC V6J 1W9\r\n"
 				+ "Canada";
+		assertEquals(expected, address.formatAddress());
+	}
+	
+	
+	@Test
+	public void testFormatZH(){
+		AddressZH address = new AddressZH("Ren Min Xi Lu", "203", "Kunming", "123456", "Yunnan");
+		String expected = "203 Ren Min Xi Lu, Kunming\r\n"
+				+ "123456 Yunnan\r\n"
+				+ "People's republic of China";
 		assertEquals(expected, address.formatAddress());
 	}
 }
