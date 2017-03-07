@@ -124,7 +124,7 @@ public class StudentController {
 					}
 				}while(studentSelected == false);
 				try {
-					this.subMenu(cin, studFactory, studentSelected, closeProgramm, action);
+					closeProgramm = this.subMenu(cin, studFactory, studentSelected, closeProgramm, action);
 				} catch (InvalidInputNumberException e) {
 					view.invalidInputNumber();
 				}	
@@ -139,7 +139,7 @@ public class StudentController {
 		}while(closeProgramm == false);	
 	}
 	
-	private void subMenu(BufferedReader cin, AbstractStudentFactory studFactory, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 
+	private boolean subMenu(BufferedReader cin, AbstractStudentFactory studFactory, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 
 	{
 		do{
 			view.menuView();
@@ -183,5 +183,7 @@ public class StudentController {
 					break;
 			}
 		}while(studentSelected == true && closeProgramm == false);
+		return closeProgramm;
 	}
+	
 }
