@@ -35,8 +35,8 @@ public class StudentZH extends Student implements AbstractStudentFactory {
 
 	@Override
 	public AddressZH createAddress(List<String> data) {
-		return new AddressZH(data.get(4), data.get(3), data.get(5),
-				data.get(10), data.get(6));
+		return new AddressZH(data.get(3), data.get(4), data.get(5),
+				data.get(6), data.get(10));
 	}
 
 	@Override

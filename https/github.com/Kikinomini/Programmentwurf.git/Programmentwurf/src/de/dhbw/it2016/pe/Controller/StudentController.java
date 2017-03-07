@@ -1,3 +1,10 @@
+/********************************************************************************************
+ * 
+ * File: StudentController.java
+ * Copyright: @2017 Daniel Jaros, Nina Kiwatrowski, Sarah Willibald. All rights reserved. 
+ * 
+ *******************************************************************************************/
+
 package de.dhbw.it2016.pe.Controller;
 
 import java.io.BufferedReader;
@@ -75,7 +82,7 @@ public class StudentController {
 	{
 		boolean closeProgramm = false;
 		do {
-			view.mainMenu();		
+			view.showMainMenu();		
 			MainAction action = null;
 			String input = cin.readLine();
 			String id = null;
@@ -136,7 +143,7 @@ public class StudentController {
 				view.invalidInputNumber();
 				continue;
 			}
-		}while(closeProgramm == false);	
+		} while(closeProgramm == false);	
 	}
 	
 	private boolean subMenu(BufferedReader cin, AbstractStudentFactory studFactory, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 

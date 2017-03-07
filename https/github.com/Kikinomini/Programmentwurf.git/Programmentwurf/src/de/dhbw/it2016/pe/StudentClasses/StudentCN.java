@@ -12,7 +12,6 @@ public class StudentCN extends Student implements AbstractStudentFactory {
 	protected PhoneNumberNANP phone;
 	
 	public StudentCN(List<String> data) {
-		super();
 		firstName = data.get(1);
 		lastName = data.get(2);
 		address = createAddress(data);
@@ -34,8 +33,8 @@ public class StudentCN extends Student implements AbstractStudentFactory {
 
 	@Override
 	public AddressUS createAddress(List<String> data) {
-		return new AddressUS(data.get(4), data.get(3), data.get(5),
-				data.get(10), data.get(6));
+		return new AddressUS(data.get(3), data.get(4), data.get(5),
+				 data.get(6), data.get(10));
 	}
 
 	@Override

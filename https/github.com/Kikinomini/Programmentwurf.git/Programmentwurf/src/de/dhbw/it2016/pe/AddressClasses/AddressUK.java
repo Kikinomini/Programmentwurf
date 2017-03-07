@@ -2,20 +2,29 @@ package de.dhbw.it2016.pe.AddressClasses;
 
 public class AddressUK extends Address implements AddressInterface {
 	
-	public AddressUK(String streetNumber, String street, String city, String zipCode) {
-		this.streetNumber = streetNumber;		
+	public AddressUK(String street, String streetNumber, String city, String zipCode) {
 		this.street = street;
+		this.streetNumber = streetNumber;		
 		this.city = city;
 		this.zipCode = zipCode;
 	}
 	
 	public String formatAddress() {
+		
+		/*
+		 * Addresses in the United Kingdom follow the following pattern:
+		 * <STREET_NUMBER> <STREET>
+		 * <CITY>
+		 * United Kingdom
+		 */
+		
 		String newline = System.getProperty("line.separator");
 		StringBuilder builder = new StringBuilder();
 		builder.append(streetNumber);
 		builder.append(" ");
 		builder.append(street);
 		builder.append(newline);
+		
 		builder.append(city);
 		builder.append(newline);
 		builder.append(zipCode);

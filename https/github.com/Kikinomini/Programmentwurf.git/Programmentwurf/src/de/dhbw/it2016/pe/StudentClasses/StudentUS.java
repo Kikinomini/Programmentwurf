@@ -34,8 +34,8 @@ public class StudentUS extends Student implements AbstractStudentFactory {
 
 	@Override
 	public AddressUS createAddress(List<String> data) {
-		return new AddressUS(data.get(4), data.get(3), data.get(5),
-				data.get(10), data.get(6));
+		return new AddressUS(data.get(3), data.get(4), data.get(5),
+				 data.get(6), data.get(10));
 	}
 
 	@Override

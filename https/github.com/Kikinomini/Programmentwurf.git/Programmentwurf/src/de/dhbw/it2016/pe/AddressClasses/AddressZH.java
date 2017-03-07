@@ -5,12 +5,12 @@ public class AddressZH extends Address implements AddressInterface {
 	
 	private String province;
 	
-	public AddressZH(String street, String streetNumber, String city, String province, String zipCode) {
-		this.streetNumber = streetNumber;		
+	public AddressZH(String street, String streetNumber, String city, String zipCode, String province) {
 		this.street = street;
+		this.streetNumber = streetNumber;		
 		this.city = city;
-		this.province = province;
 		this.zipCode = zipCode;
+		this.province = province;
 	}
 	
 	public String formatAddress() {
@@ -19,7 +19,7 @@ public class AddressZH extends Address implements AddressInterface {
 		builder.append(streetNumber);
 		builder.append(" ");
 		builder.append(street);
-		builder.append(" ,");
+		builder.append(", ");
 		builder.append(city);
 		builder.append(newline);
 		builder.append(zipCode);

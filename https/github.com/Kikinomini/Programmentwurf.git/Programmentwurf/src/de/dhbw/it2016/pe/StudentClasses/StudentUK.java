@@ -34,7 +34,7 @@ public class StudentUK extends Student implements AbstractStudentFactory {
 
 	@Override
 	public AddressUK createAddress(List<String> data) {
-		return new AddressUK(data.get(4), data.get(3), data.get(5),
+		return new AddressUK(data.get(3), data.get(4), data.get(5),
 				data.get(6));
 	}
 
