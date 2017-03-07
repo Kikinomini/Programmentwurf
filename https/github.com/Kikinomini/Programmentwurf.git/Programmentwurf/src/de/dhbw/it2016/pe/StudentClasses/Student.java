@@ -1,11 +1,18 @@
 package de.dhbw.it2016.pe.StudentClasses;
 
-public abstract class Student {
-	// TODO: Transfer common behavior of all Students here [protected?]
+import java.util.List;
+
+import de.dhbw.it2016.pe.AddressClasses.Address;
+import de.dhbw.it2016.pe.PhoneNumberClasses.PhoneNumber;
+
+
+public class Student {
 	
 	protected String id;
 	protected String firstName;
 	protected String lastName;
+	protected Address address;
+	protected PhoneNumber phone;
 	
 	public String getFirstName() {
 		return firstName;
@@ -15,11 +22,30 @@ public abstract class Student {
 		return lastName;
 	}
 
-	public abstract String getCompleteName();
+	public String address() {
+		return address.formatAddress();
+	}
+
+	public String phone() {
+		return phone.formatNational();
+	}
 	
-	public abstract String address();
-
-	public abstract String phone();
-
-	public abstract String intlPhone();
+	public String intlPhone() {
+		return phone.formatInternational();
+	}
+	
+	public String getCompleteName() 
+	{
+		return id + ": " + firstName + " " + lastName;		
+	}
+	
+	public Student(Address address, PhoneNumber phone, List<String> data)
+	{
+		firstName = data.get(1);
+		lastName = data.get(2);
+		this.address = address;
+		this.phone = phone;
+		id = data.get(0);
+	}
 }
+

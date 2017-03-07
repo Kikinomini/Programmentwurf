@@ -5,12 +5,12 @@ public class AddressUS extends Address implements AddressInterface {
 	
 	private String state;
 	
-	public AddressUS(String streetNumber, String street, String city, String state, String zipCode) {
-		this.streetNumber = streetNumber;		
+	public AddressUS(String street, String streetNumber, String city, String zipCode, String state) {
 		this.street = street;
+		this.streetNumber = streetNumber;		
 		this.city = city;
-		this.state = state;
 		this.zipCode = zipCode;
+		this.state = state;
 	}
 	
 	public String formatAddress() {

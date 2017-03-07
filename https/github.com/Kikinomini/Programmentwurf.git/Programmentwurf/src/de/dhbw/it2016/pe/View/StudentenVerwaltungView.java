@@ -5,15 +5,15 @@ public class StudentenVerwaltungView {
 	public void menuView()
 	{
 		System.out.println("What will you do?");
-		System.out.println("[1] - Display info");
-		System.out.println("[2] - Display address");
-		System.out.println("[3] - Display phone number");
-		System.out.println("[4] - Display int'l phone number");
-		System.out.println("[5] - Back");
+		System.out.println("[2] - Display info");
+		System.out.println("[3] - Display address");
+		System.out.println("[4] - Display phone number");
+		System.out.println("[5] - Display int'l phone number");
+		System.out.println("[6] - Back");
 		System.out.println("[8] - Exit program");
 	}
 	
-	public void mainMenu()
+	public void showMainMenu()
 	{
 		System.out.println("What will you do?");
 		System.out.println("[1] - Enter a studentid:");
@@ -60,8 +60,9 @@ public class StudentenVerwaltungView {
 		System.out.println("We're sorry, but that student's country is not recognized by our servers.");
 	}
 	
-	public void InvalidInputNumberException()
-	{
+
+	public void invalidStudentId() {
 		System.out.println("We're sorry, but that student's id is not recognized by our servers.");
+		
 	}
 }
