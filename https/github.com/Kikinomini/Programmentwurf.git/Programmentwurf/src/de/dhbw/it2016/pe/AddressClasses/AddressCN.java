@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressCN extends Address implements AddressInterface {
+public class AddressCN extends Address {
 	
 	private String state;
 	

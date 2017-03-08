@@ -41,7 +41,7 @@ public class StudentController {
 			String input = cin.readLine();
 			String id = null;
 			Student student = null;
-			StudentFactory studFactory = null;
+			StudentFactory studFactory = new StudentFactory();
 			
 			try {
 				int tsAction = Integer.parseInt(input);

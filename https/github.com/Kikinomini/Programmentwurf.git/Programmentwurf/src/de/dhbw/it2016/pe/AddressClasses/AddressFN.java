@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressFN extends Address implements AddressInterface{
+public class AddressFN extends Address {
 	
 	public AddressFN(String street, String streetNumber, String city, String zipCode) {
 		this.street = street;

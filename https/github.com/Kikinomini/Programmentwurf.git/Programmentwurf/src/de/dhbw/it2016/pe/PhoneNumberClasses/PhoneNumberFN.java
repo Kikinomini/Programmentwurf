@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.PhoneNumberClasses;
 
-public class PhoneNumberFN extends PhoneNumber implements PhoneNumberInterface {
+public class PhoneNumberFN extends PhoneNumber {
 
 
 	public PhoneNumberFN(String areaCode, String subscriber) {
