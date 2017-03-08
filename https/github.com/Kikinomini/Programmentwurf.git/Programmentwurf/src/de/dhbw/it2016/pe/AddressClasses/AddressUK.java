@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressUK extends AbstractAddressFactory {
+public class AddressUK extends AbstractAddress {
 	
 	public AddressUK(String street, String streetNumber, String city, String zipCode) {
 		this.street = street;
@@ -9,14 +9,14 @@ public class AddressUK extends AbstractAddressFactory {
 		this.zipCode = zipCode;
 	}
 	
+	/*
+	 * Formats addresses for the United Kingdom.
+	 * Addresses in the UK must be in the following format:
+	 * <STREET_NUMBER> <STREET>
+	 * <CITY>
+	 * United Kingdom
+	 */
 	public String formatAddress() {
-		
-		/*
-		 * Addresses in the United Kingdom follow the following pattern:
-		 * <STREET_NUMBER> <STREET>
-		 * <CITY>
-		 * United Kingdom
-		 */
 		
 		String newline = System.getProperty("line.separator");
 		StringBuilder builder = new StringBuilder();

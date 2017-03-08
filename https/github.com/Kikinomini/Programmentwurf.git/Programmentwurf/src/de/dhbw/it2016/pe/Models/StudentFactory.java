@@ -26,51 +26,51 @@ public class StudentFactory extends AbstractStudentFactory {
 		switch (country) 
 		{		
 			case "CN":
-				AbstractAddressFactory address = new AddressUS(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
+				AbstractAddress address = new AddressUS(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						 data.get(info.ZIP_CODE), data.get(info.PROVINCE_OPTIONAL));
-				AbstractPhoneNumberFactory phone = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				AbstractPhoneNumber phone = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, address, phone);
 				return student;
 
 			case "DE":	
-				AbstractAddressFactory addressDE = new AddressDE(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
+				AbstractAddress addressDE = new AddressDE(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						data.get(info.ZIP_CODE));
-				AbstractPhoneNumberFactory phoneDE = new PhoneNumberDE(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				AbstractPhoneNumber phoneDE = new PhoneNumberDE(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, addressDE, phoneDE);
 				return student;
 				
 			case "FN":
-				AbstractAddressFactory addressFN = new AddressFN(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
+				AbstractAddress addressFN = new AddressFN(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						data.get(info.ZIP_CODE));
-				AbstractPhoneNumberFactory phoneFN = new PhoneNumberFN(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				AbstractPhoneNumber phoneFN = new PhoneNumberFN(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, addressFN, phoneFN);
 				return student;
 			
 			case "FR":	
-				AbstractAddressFactory addressFR = new AddressFR(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
+				AbstractAddress addressFR = new AddressFR(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						data.get(info.ZIP_CODE));
-				AbstractPhoneNumberFactory phoneFR = new PhoneNumberFR(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				AbstractPhoneNumber phoneFR = new PhoneNumberFR(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, addressFR, phoneFR);
 				return student;
 
 			case "UK":
-				AbstractAddressFactory addressUK = new AddressUK(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
+				AbstractAddress addressUK = new AddressUK(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						data.get(info.ZIP_CODE));
-				AbstractPhoneNumberFactory phoneUK = new PhoneNumberUK(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				AbstractPhoneNumber phoneUK = new PhoneNumberUK(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, addressUK, phoneUK);
 				return student;
 
 			case "US":
-				AbstractAddressFactory addressUS = new AddressUS(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
+				AbstractAddress addressUS = new AddressUS(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						 data.get(info.ZIP_CODE), data.get(info.PROVINCE_OPTIONAL));
-				AbstractPhoneNumberFactory phoneUS = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				AbstractPhoneNumber phoneUS = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, addressUS, phoneUS);
 				return student;
 			
 			case "ZH": // Create a new Chinese student
-				AbstractAddressFactory addressZH = new AddressZH(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
+				AbstractAddress addressZH = new AddressZH(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						 data.get(info.ZIP_CODE), data.get(info.PROVINCE_OPTIONAL));
-				AbstractPhoneNumberFactory phoneZH = new PhoneNumberZH(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				AbstractPhoneNumber phoneZH = new PhoneNumberZH(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, addressZH, phoneZH);
 				return student;
 			

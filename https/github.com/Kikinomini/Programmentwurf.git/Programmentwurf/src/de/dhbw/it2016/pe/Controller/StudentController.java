@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import de.dhbw.it2016.pe.DataStore;
-import de.dhbw.it2016.pe.MainAction;
+import de.dhbw.it2016.pe.MainMenuSelector;
 import de.dhbw.it2016.pe.Exceptions.*;
 import de.dhbw.it2016.pe.Models.*;
 import de.dhbw.it2016.pe.View.StudentenVerwaltungView;
@@ -35,7 +35,7 @@ public class StudentController {
 		boolean closeProgramm = false;
 		do {
 			view.showMainMenu();		
-			MainAction action = null;
+			MainMenuSelector action = null;
 			String input = cin.readLine();
 			String id = null;
 			Student student = null;
@@ -43,7 +43,7 @@ public class StudentController {
 			
 			try {
 				int tsAction = Integer.parseInt(input);
-				action = MainAction.values()[tsAction];
+				action = MainMenuSelector.values()[tsAction];
 			} 
 			catch (NumberFormatException e) 
 			{
@@ -111,7 +111,7 @@ public class StudentController {
 		} while (closeProgramm == false);	
 	}
 
-	private boolean subMenu(BufferedReader cin, Student student, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 
+	private boolean subMenu(BufferedReader cin, Student student, boolean studentSelected, boolean closeProgramm, MainMenuSelector action) throws InvalidInputNumberException, IOException 
 	{
 		do{
 			view.menuView();
@@ -119,7 +119,7 @@ public class StudentController {
 
 			try {
 				int tsAction = Integer.parseInt(input);
-				action = MainAction.values()[tsAction];
+				action = MainMenuSelector.values()[tsAction];
 			} catch (NumberFormatException e) {
 				view.invalidFormat();
 				continue;

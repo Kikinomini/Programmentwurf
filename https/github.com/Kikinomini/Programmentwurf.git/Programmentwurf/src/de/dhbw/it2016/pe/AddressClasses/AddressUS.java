@@ -1,7 +1,7 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
 // Address both used by the US and Canada
-public class AddressUS extends AbstractAddressFactory {
+public class AddressUS extends AbstractAddress {
 	
 	private String state;
 	
@@ -13,6 +13,13 @@ public class AddressUS extends AbstractAddressFactory {
 		this.state = state;
 	}
 	
+	/*
+	 * Formats addresses for the United States of America.
+	 * American addresses must be in the following format:
+	 * <STREET_NUMBER> <STREET>
+	 * <CITY>, <STATE> <ZIP_CODE>
+	 * United States
+	 */
 	public String formatAddress() {
 		String newline = System.getProperty("line.separator");
 		StringBuilder builder = new StringBuilder();

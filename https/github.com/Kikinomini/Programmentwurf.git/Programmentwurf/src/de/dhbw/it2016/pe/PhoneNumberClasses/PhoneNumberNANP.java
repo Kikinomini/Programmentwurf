@@ -6,7 +6,7 @@ package de.dhbw.it2016.pe.PhoneNumberClasses;
  * and the U.S. territories. Not all North American countries participate in the NANP. (Wikipedia)
  */
 
-public class PhoneNumberNANP extends AbstractPhoneNumberFactory {
+public class PhoneNumberNANP extends AbstractPhoneNumber {
 
 
 	public PhoneNumberNANP(String areaCode, String subscriber) {
@@ -14,14 +14,18 @@ public class PhoneNumberNANP extends AbstractPhoneNumberFactory {
 		this.subscriber = subscriber;
 	}
 	
-
-	@Override
+	/*
+	 * Formats an international phone number for a member of the NANP.
+     * The country code is +1; there is no leading zero.
+	 */
 	public String formatInternational() {
 		StringBuilder builder = new StringBuilder();
+		
 		builder.append("+1-");
 		builder.append(areaCode);
 		builder.append("-");
 		builder.append(subscriber);
+		
 		return builder.toString();
 	}
 }

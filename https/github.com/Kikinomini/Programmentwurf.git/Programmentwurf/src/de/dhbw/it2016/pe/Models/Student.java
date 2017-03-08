@@ -1,16 +1,16 @@
 package de.dhbw.it2016.pe.Models;
 
 import de.dhbw.it2016.pe.IdentInfo;
-import de.dhbw.it2016.pe.AddressClasses.AbstractAddressFactory;
-import de.dhbw.it2016.pe.PhoneNumberClasses.AbstractPhoneNumberFactory;
+import de.dhbw.it2016.pe.AddressClasses.AbstractAddress;
+import de.dhbw.it2016.pe.PhoneNumberClasses.AbstractPhoneNumber;
 
 public final class Student {
 	
-	private AbstractAddressFactory address;
-	private AbstractPhoneNumberFactory phone;
+	private AbstractAddress address;
+	private AbstractPhoneNumber phone;
 	private IdentInfo idInfo;
 
-	public Student(IdentInfo idInfo, AbstractAddressFactory address, AbstractPhoneNumberFactory phone)
+	public Student(IdentInfo idInfo, AbstractAddress address, AbstractPhoneNumber phone)
 	{
 	    this.idInfo = idInfo;
 	    this.address = address;
@@ -18,16 +18,16 @@ public final class Student {
 	}
 	
 	public String getFirstName() {
-	    return idInfo.firstName;
+	    return idInfo.getFirstName();
 	}
 
 	public String getLastName() {
-	    return idInfo.lastName;
+	    return idInfo.getLastName();
 	}
 	
 	public String getCompleteName() 
 	{
-	    return idInfo.id + ": " + idInfo.firstName + " " + idInfo.lastName;		
+	    return idInfo.getId() + ": " + idInfo.getFirstName() + " " + idInfo.getLastName();		
 	}
 
 	public String address() {

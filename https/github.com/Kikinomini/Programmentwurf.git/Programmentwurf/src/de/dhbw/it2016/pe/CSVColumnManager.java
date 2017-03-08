@@ -1,9 +1,10 @@
 package de.dhbw.it2016.pe;
 
-// This class is reserved for further purposes.
-// TODO: Delete magic numbers
+// This class defines a set of constants in order to access the 
+// various columns of the datastore.csv file.
+
 public final class CSVColumnManager {
-    
+
     public final byte STUDENT_ID = 0;
     public final byte FIRST_NAME = 1;
     public final byte LAST_NAME = 2;
@@ -15,5 +16,4 @@ public final class CSVColumnManager {
     public final byte PHONE_AREA_CODE = 8;
     public final byte PHONE_SUBSCRIBER = 9;
     public final byte PROVINCE_OPTIONAL = 10;
-
 }

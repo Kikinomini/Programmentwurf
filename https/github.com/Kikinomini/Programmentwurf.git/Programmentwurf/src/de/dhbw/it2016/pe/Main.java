@@ -5,16 +5,16 @@ import java.io.InputStreamReader;
 import de.dhbw.it2016.pe.Controller.StudentController;
 
 public class Main {
-
-	private static BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
+    
+    private static BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
+    
+    public static void main(String[] args) throws Exception {		
+	StudentController sController = new StudentController();
 	
-	public static void main(String[] args) throws Exception {		
-		StudentController sController = new StudentController();
-	
-		sController.welcomeView();
-		sController.manageMainMenu(cin);
-		sController.closeView();
+	sController.welcomeView();
+	sController.manageMainMenu(cin);
+	sController.closeView();
 
-		cin.close();
-	}
+	cin.close();
+    }
 }
