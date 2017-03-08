@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressDE extends Address {
+public class AddressDE extends AbstractAddressFractory {
 
 	public AddressDE(String street, String streetNumber, String city, String zipCode) {
 		this.street = street;

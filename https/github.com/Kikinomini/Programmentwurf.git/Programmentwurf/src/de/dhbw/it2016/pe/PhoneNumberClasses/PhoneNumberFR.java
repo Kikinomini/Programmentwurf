@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.PhoneNumberClasses;
 
-public class PhoneNumberFR extends PhoneNumber {
+public class PhoneNumberFR extends AbstractPhoneNumberFactory {
 
 
 	public PhoneNumberFR(String areaCode, String subscriber) {

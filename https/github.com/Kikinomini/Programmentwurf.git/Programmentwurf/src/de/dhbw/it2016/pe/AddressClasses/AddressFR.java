@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressFR extends Address  {
+public class AddressFR extends AbstractAddressFractory  {
 	
 	public AddressFR(String street, String streetNumber, String city, String zipCode) {
 		this.street = street.toUpperCase();

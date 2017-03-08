@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.PhoneNumberClasses;
 
-public abstract class PhoneNumber {
+public abstract class AbstractPhoneNumberFactory {
 	
 	protected String areaCode;
     protected String subscriber;
