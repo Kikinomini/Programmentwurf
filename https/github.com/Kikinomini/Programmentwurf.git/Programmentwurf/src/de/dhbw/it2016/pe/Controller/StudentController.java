@@ -4,11 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
-import de.dhbw.it2016.pe.StudentFactory;
 import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.MainAction;
 import de.dhbw.it2016.pe.Exceptions.*;
-import de.dhbw.it2016.pe.StudentClasses.*;
+import de.dhbw.it2016.pe.Model.*;
 import de.dhbw.it2016.pe.View.StudentenVerwaltungView;
 
 public class StudentController {

@@ -1,7 +1,7 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
 // Address both used by the US and Canada
-public class AddressZH extends AbstractAddressFractory {
+public class AddressZH extends AbstractAddressFactory {
 	
 	private String province;
 	

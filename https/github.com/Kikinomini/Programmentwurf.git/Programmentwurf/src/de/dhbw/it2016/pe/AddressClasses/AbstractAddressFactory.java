@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public abstract class AbstractAddressFractory {
+public abstract class AbstractAddressFactory {
 	
 	    protected String street;
 	    protected String streetNumber;

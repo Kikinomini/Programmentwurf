@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import de.dhbw.it2016.pe.Controller.StudentController;
 import de.dhbw.it2016.pe.Exceptions.InvalidCountryCodeException;
-import de.dhbw.it2016.pe.StudentClasses.*;
+import de.dhbw.it2016.pe.Model.*;
 
 public class StudentTest {
 	public void TestName() 

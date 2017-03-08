@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.AddressClasses;
 
-public class AddressCN extends AbstractAddressFractory {
+public class AddressCN extends AbstractAddressFactory {
 	
 	private String state;
 	
