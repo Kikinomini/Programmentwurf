@@ -10,40 +10,51 @@ import de.dhbw.it2016.pe.Exceptions.*;
 import de.dhbw.it2016.pe.Models.*;
 import de.dhbw.it2016.pe.View.StudentenVerwaltungView;
 
+/* Manages the entire behavior of the program,
+ * i.e. the administration of the menus.
+ */
 public class StudentController {
 	
+	// Serves as interface to the main output device.
 	private StudentenVerwaltungView view = new StudentenVerwaltungView();
 		
+	/*
+	 * This method serves as a connection to the datastore.csv file.
+	 */
 	public List<String> readDataFromStore(String id)
 	{
+		// The data list stores all the information out of one line.
 		List<String> data = DataStore.read(id);
 		return data;
 	}
-	
-	public void closeView()
-	{
-		view.closeView();
-	}
-	
-	public void welcomeView()
-	{
-		view.welcomeView();
-	}
+			
+	/***************************************************************************************
+	 * 
+	 * Menu Functions
+	 * 
+	****************************************************************************************/
 	
 	public void manageMainMenu(BufferedReader cin) throws IOException, NullPointerException
 	{
 		boolean closeProgramm = false;
 		do {
+			
+			// Loading the initial screen
+			view.welcomeView();
 			view.showMainMenu();		
-			MainMenuSelector action = null;
+
+			StudentFactory studFactory = new StudentFactory();
 			String input = cin.readLine();
+
+			// The enumeration "userSelection" displays a user's choice.
+			MainMenuSelector userSelection = null;
 			String id = null;
 			Student student = null;
-			StudentFactory studFactory = new StudentFactory();
+			
 			
 			try {
-				int tsAction = Integer.parseInt(input);
-				action = MainMenuSelector.values()[tsAction];
+				int tempUserSelection = Integer.parseInt(input);
+				userSelection = MainMenuSelector.values()[tempUserSelection];
 			} 
 			catch (NumberFormatException e) 
 			{
@@ -56,8 +67,11 @@ public class StudentController {
 				continue;
 			}
 			
-			switch (action) 
+			// From here on, the user input will be processed (if it was valid).
+			
+			switch (userSelection) 
 			{
+			
 			case SearchStudentByID:
 				boolean studentSelected = false;
 				do
@@ -65,11 +79,13 @@ public class StudentController {
 					view.enterId();
 					id = cin.readLine();
 					List<String> data = readDataFromStore(id);
+			
 					if(data.isEmpty())
 					{
 					    view.invalidStudentId();
 						continue;
 					}
+					
 					try 
 					{
 					    student = studFactory.createStudent(data);
@@ -94,13 +110,14 @@ public class StudentController {
 				} while(studentSelected == false);
 				
 				try {
-				    closeProgramm = this.subMenu(cin, student, studentSelected, closeProgramm, action);
+				    closeProgramm = this.subMenu(cin, student, studentSelected, closeProgramm, userSelection);
 				} catch (InvalidInputNumberException e) {
 					view.invalidInputNumber();
 				}	
 				break;
 				
 			case ExitProgram:
+				view.closeView();
 				closeProgramm = true;
 				break;
 				
@@ -148,13 +165,14 @@ public class StudentController {
 					view.printParameter(student.intlPhone());
 					continue;
 					
-				case ExitProgram:
-					closeProgramm = true;
-					break;
-					
 				case Back:
 					studentSelected = false;
 					break;
+
+				case ExitProgram:
+					view.closeView();
+					closeProgramm = true;
+					break;	
 					
 				default:
 					view.invalidFormat();
@@ -163,6 +181,5 @@ public class StudentController {
 		} while (studentSelected == true && closeProgramm == false);
 		
 		return closeProgramm;
-	}
-	
+	}	
 }

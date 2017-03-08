@@ -2,14 +2,14 @@ package de.dhbw.it2016.pe.AddressClasses;
 
 public class AddressCN extends AbstractAddress {
 	
-	private String state;
+	private String province;
 	
 	public AddressCN(String streetNumber, String street, String city, String zipCode, String state) {
 		this.street = street;
 		this.streetNumber = streetNumber;		
 		this.city = city;
 		this.zipCode = zipCode;
-		this.state = state;
+		this.province = state;
 	}
 	
 	/*
@@ -30,7 +30,7 @@ public class AddressCN extends AbstractAddress {
 		
 		builder.append(city);
 		builder.append(", ");
-		builder.append(state);
+		builder.append(province);
 		builder.append(" ");
 		builder.append(zipCode);
 		builder.append(newline);
