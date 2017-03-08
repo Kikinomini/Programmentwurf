@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.Exceptions;
 
-public class InvalidCountryCodeException extends Exception {
+public final class InvalidCountryCodeException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 

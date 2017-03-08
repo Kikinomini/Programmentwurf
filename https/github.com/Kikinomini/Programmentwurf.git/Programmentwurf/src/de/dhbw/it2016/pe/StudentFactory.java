@@ -25,15 +25,15 @@ public class StudentFactory {
 				PhoneNumber phone = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(address, phone, data);
 				return student;
-			case "DE":
-				
+
+			case "DE":	
 				Address addressDE = new AddressDE(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						data.get(info.ZIP_CODE));
 				PhoneNumber phoneDE = new PhoneNumberDE(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(addressDE, phoneDE, data);
 				return student;
-			case "FN":
 				
+			case "FN":
 				Address addressFN = new AddressFN(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						data.get(info.ZIP_CODE));
 				PhoneNumber phoneFN = new PhoneNumberFN(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
@@ -61,7 +61,7 @@ public class StudentFactory {
 				student = new Student(addressUS, phoneUS, data);
 				return student;
 			
-			case "ZH":
+			case "ZH": // Create a new Chinese student
 				Address addressZH = new AddressZH(data.get(info.STREET), data.get(info.STREET_NUMBER), data.get(info.CITY),
 						 data.get(info.ZIP_CODE), data.get(info.PROVINCE_OPTIONAL));
 				PhoneNumber phoneZH = new PhoneNumberZH(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));

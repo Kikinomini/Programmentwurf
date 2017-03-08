@@ -1,6 +1,6 @@
 package de.dhbw.it2016.pe.Exceptions;
 
-public class InvalidInputNumberException extends Exception {
+public final class InvalidInputNumberException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 

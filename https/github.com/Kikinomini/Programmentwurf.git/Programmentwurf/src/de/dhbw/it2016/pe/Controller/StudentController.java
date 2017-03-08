@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
-import de.dhbw.it2016.pe.AbstractStudentFactory;
+import de.dhbw.it2016.pe.StudentFactory;
 import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.MainAction;
 import de.dhbw.it2016.pe.Exceptions.*;
@@ -40,8 +40,8 @@ public class StudentController {
 			MainAction action = null;
 			String input = cin.readLine();
 			String id = null;
-			AbstractStudentFactory studFactory = new AbstractStudentFactory();
 			Student student = null;
+			StudentFactory studFactory = null;
 			
 			try {
 				int tsAction = Integer.parseInt(input);
@@ -74,7 +74,7 @@ public class StudentController {
 					}
 					try 
 					{
-						student =  studFactory.createStudent(data);
+						student = studFactory.createStudent(data);
 						view.studentSuccessfullySelected(student.getCompleteName());
 						studentSelected = true;
 					}
@@ -90,14 +90,17 @@ public class StudentController {
 					view.invalidInputNumber();
 				}	
 				break;
+				
 			case ExitProgram:
 				closeProgramm = true;
 				break;
+				
 			default:
 				view.invalidInputNumber();
 				continue;
 			}
-		}while(closeProgramm == false);	
+			
+		} while(closeProgramm == false);	
 	}
 
 	private boolean subMenu(BufferedReader cin, Student student, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 

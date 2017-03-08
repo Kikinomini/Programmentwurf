@@ -5,7 +5,6 @@ public abstract class PhoneNumber {
 	protected String areaCode;
     protected String subscriber;
 
-
     public String formatNational() {
         StringBuilder builder = new StringBuilder();
         builder.append(areaCode);
@@ -15,5 +14,4 @@ public abstract class PhoneNumber {
     }
 
     public abstract String formatInternational();
-
 }

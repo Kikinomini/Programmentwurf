@@ -1,14 +1,11 @@
 package de.dhbw.it2016.pe.PhoneNumberClasses;
 
 public class PhoneNumberDE extends PhoneNumber implements PhoneNumberInterface{
-
-
+	
 	public PhoneNumberDE(String areaCode, String subscriber) {
 		this.areaCode = areaCode;
 		this.subscriber = subscriber;
 	}
-	
-	
 	
 	public String formatInternational() {
 		StringBuilder builder = new StringBuilder();
