@@ -67,23 +67,34 @@ public class StudentController {
 					List<String> data = readDataFromStore(id);
 					if(data.isEmpty())
 					{
-						view.invalidStudentId();
+					    view.invalidStudentId();
 						continue;
 					}
 					try 
 					{
-						student = studFactory.createStudent(data);
-						view.studentSuccessfullySelected(student.getCompleteName());
-						studentSelected = true;
+					    student = studFactory.createStudent(data);
+					    view.studentSuccessfullySelected(student.getCompleteName());
+					    studentSelected = true;
 					}
 					catch (InvalidCountryCodeException e) 
 					{
 						view.invalidCountryNumber();
 						continue;
 					}
-				}while(studentSelected == false);
+					catch (IndexOutOfBoundsException e) 
+					{
+					    	view.corruptedDatabase();
+					    	continue;
+					}
+					catch (Exception e) 
+					{
+					    view.unknownError();
+					}
+					
+				} while(studentSelected == false);
+				
 				try {
-					closeProgramm = this.subMenu(cin, student, studentSelected, closeProgramm, action);
+				    closeProgramm = this.subMenu(cin, student, studentSelected, closeProgramm, action);
 				} catch (InvalidInputNumberException e) {
 					view.invalidInputNumber();
 				}	

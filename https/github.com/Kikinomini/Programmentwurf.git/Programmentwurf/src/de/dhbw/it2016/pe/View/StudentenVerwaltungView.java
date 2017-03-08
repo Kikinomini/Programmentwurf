@@ -65,4 +65,12 @@ public class StudentenVerwaltungView {
 		System.out.println("We're sorry, but that student's id is not recognized by our servers.");
 		
 	}
+
+	public void corruptedDatabase() {
+	    System.out.println("We're sorry, but your database seems to be corrupted.");	    
+	}
+
+	public void unknownError() {
+	    System.out.println("Something unexpected went wrong.");
+	}
 }
