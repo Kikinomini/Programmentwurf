@@ -1,4 +1,4 @@
-package de.dhbw.it2016.pe.Model;
+package de.dhbw.it2016.pe.Models;
 
 import java.util.List;
 

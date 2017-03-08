@@ -4,6 +4,7 @@ package de.dhbw.it2016.pe;
 // TODO: Delete magic numbers
 public final class CSVColumnManager {
 	
+    	public final byte STUDENT_ID = 0;
 	public final byte FIRST_NAME = 1;
 	public final byte LAST_NAME = 2;
 	public final byte STREET = 3;

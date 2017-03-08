@@ -7,7 +7,7 @@ import java.util.List;
 import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.MainAction;
 import de.dhbw.it2016.pe.Exceptions.*;
-import de.dhbw.it2016.pe.Model.*;
+import de.dhbw.it2016.pe.Models.*;
 import de.dhbw.it2016.pe.View.StudentenVerwaltungView;
 
 public class StudentController {
@@ -30,7 +30,6 @@ public class StudentController {
 		view.welcomeView();
 	}
 	
-	@SuppressWarnings("null")
 	public void manageMainMenu(BufferedReader cin) throws IOException, NullPointerException
 	{
 		boolean closeProgramm = false;
@@ -98,8 +97,7 @@ public class StudentController {
 				view.invalidInputNumber();
 				continue;
 			}
-			
-		} while(closeProgramm == false);	
+		} while (closeProgramm == false);	
 	}
 
 	private boolean subMenu(BufferedReader cin, Student student, boolean studentSelected, boolean closeProgramm, MainAction action) throws InvalidInputNumberException, IOException 
@@ -126,26 +124,33 @@ public class StudentController {
 				case DisplayInfo:
 					view.printParameter(student.getCompleteName());
 					continue;
+					
 				case DisplayAddress:
 					view.printParameter(student.address());	
 					continue;
+					
 				case DisplayPhoneNumber:
 					view.printParameter(student.phone());
 					continue;
+					
 				case DisplayIntlPhoneNumber:
 					view.printParameter(student.intlPhone());
 					continue;
+					
 				case ExitProgram:
 					closeProgramm = true;
 					break;
+					
 				case Back:
 					studentSelected = false;
 					break;
+					
 				default:
 					view.invalidFormat();
 					break;
 			}
-		}while(studentSelected == true && closeProgramm == false);
+		} while (studentSelected == true && closeProgramm == false);
+		
 		return closeProgramm;
 	}
 	
