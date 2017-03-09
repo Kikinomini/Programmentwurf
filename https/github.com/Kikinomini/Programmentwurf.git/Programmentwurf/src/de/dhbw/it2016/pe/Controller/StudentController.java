@@ -1,3 +1,5 @@
+// TODO: Refactor!!!!!!11!!!1!
+
 package de.dhbw.it2016.pe.Controller;
 
 import java.io.BufferedReader;
@@ -125,7 +127,7 @@ public class StudentController {
 				
 				try {
 				    programClosing = this.subMenu(cin, student);
-				} catch (InvalidInputNumberException e) {
+				} catch (InvalidInputIDException e) {
 					view.invalidInputNumber();
 				}	
 				break;
@@ -142,15 +144,15 @@ public class StudentController {
 		} while (programClosing == false);	
 	}
 
-	private boolean subMenu(BufferedReader cin, Student student) throws InvalidInputNumberException, IOException 
+	private boolean subMenu(BufferedReader cin, Student student) throws InvalidInputIDException, IOException 
 	{
 		do{
 			view.menuView();
 			consoleInput = cin.readLine();
 
 			try {
-				int tsAction = Integer.parseInt(consoleInput);
-				userSelection = MainMenuSelector.values()[tsAction];
+				int tempUserSelection = Integer.parseInt(consoleInput);
+				userSelection = MainMenuSelector.values()[tempUserSelection];
 			} catch (NumberFormatException e) {
 				view.invalidFormat();
 				continue;
