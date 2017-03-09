@@ -57,30 +57,21 @@ public class StudentController {
 	public void manageMainMenu(BufferedReader cin) throws IOException, NullPointerException
 	{
 		programClosing = false;
+
+		Student student = null;
+		String id = null;
+
 		do {
 			
 			// Loading the initial screen
-			view.welcomeView();
+			view.showWelcomeView();
 			view.showMainMenu();		
 
-			StudentFactory studFactory = new StudentFactory();
 			consoleInput = cin.readLine();
 
-			String id = null;
-			Student student = null;
-			
-			try {
-				int tempUserSelection = Integer.parseInt(consoleInput);
-				userSelection = MainMenuSelector.values()[tempUserSelection];
-			} 
-			catch (NumberFormatException e) 
-			{
-				view.invalidFormat();
-				continue;
-			}
-			catch(ArrayIndexOutOfBoundsException e)
-			{
-				view.invalidInputNumber();
+			// Select a user by input of an ID from the console
+			userSelection = selectUserFromInputStream();
+			if (userSelection == null) {
 				continue;
 			}
 			
@@ -98,47 +89,35 @@ public class StudentController {
 			
 					if(data.isEmpty())
 					{
-					    view.invalidStudentId();
+					    view.errorInvalidStudentId();
 						continue;
 					}
 					
-					try 
-					{
-					    student = studFactory.createStudent(data);
-					    view.studentSuccessfullySelected(student.getIdentInfo());
-					    studentSelected = true;
-					}
-					catch (InvalidCountryCodeException e) 
-					{
-						view.invalidCountryNumber();
-						continue;
-					}
-					catch (IndexOutOfBoundsException e) 
-					{
-					    	view.corruptedDatabase();
-					    	continue;
-					}
-					catch (Exception e) 
-					{
-					    view.unknownError();
-					}
+					/* 
+					 * Selects a student out of the ID. If successful,
+					 * the studentSelected ID is set to true and the do while loop can
+					 * be left. If not successful, the student is null.
+					 */
+					student = selectStudentFromID(data);
 					
+					// If student was not loaded successfully (i.e. is not selected),
+					// the do while loop continues.
 				} while(studentSelected == false);
 				
 				try {
 				    programClosing = this.subMenu(cin, student);
 				} catch (InvalidInputIDException e) {
-					view.invalidInputNumber();
+					view.errorInvalidInputNumber();
 				}	
 				break;
 				
 			case ExitProgram:
-				view.closeView();
+				view.showCloseView();
 				programClosing = true;
 				break;
 				
 			default:
-				view.invalidInputNumber();
+				view.errorInvalidInputNumber();
 				continue;
 			}
 		} while (programClosing == false);	
@@ -147,38 +126,31 @@ public class StudentController {
 	private boolean subMenu(BufferedReader cin, Student student) throws InvalidInputIDException, IOException 
 	{
 		do{
-			view.menuView();
+			view.showSubMenu();
 			consoleInput = cin.readLine();
 
-			try {
-				int tempUserSelection = Integer.parseInt(consoleInput);
-				userSelection = MainMenuSelector.values()[tempUserSelection];
-			} catch (NumberFormatException e) {
-				view.invalidFormat();
-				continue;
-			}
-			catch(ArrayIndexOutOfBoundsException e)
-			{
-				view.invalidFormat();
+			// Select a user by input of an ID from the console
+			userSelection = selectUserFromInputStream();
+			if (userSelection == null) {
 				continue;
 			}
 			
 			switch (userSelection) 
 			{
 				case DisplayInfo:
-					view.printParameter(student.getIdentInfo());
+					view.printArbitraryInputString(student.getIdentInfo());
 					continue;
 					
 				case DisplayAddress:
-					view.printParameter(student.address());	
+					view.printArbitraryInputString(student.address());	
 					continue;
 					
 				case DisplayPhoneNumber:
-					view.printParameter(student.phone());
+					view.printArbitraryInputString(student.phone());
 					continue;
 					
 				case DisplayIntlPhoneNumber:
-					view.printParameter(student.intlPhone());
+					view.printArbitraryInputString(student.intlPhone());
 					continue;
 					
 				case Back:
@@ -186,16 +158,62 @@ public class StudentController {
 					break;
 
 				case ExitProgram:
-					view.closeView();
+					view.showCloseView();
 					programClosing = true;
 					break;	
 					
 				default:
-					view.invalidFormat();
+					view.errorInvalidFormat();
 					break;
 			}
 		} while (studentSelected == true && programClosing == false);
 		
 		return programClosing;
-	}	
+	}
+	
+	private MainMenuSelector selectUserFromInputStream() {
+		try {
+			int tempUserSelection = Integer.parseInt(consoleInput);
+			return MainMenuSelector.values()[tempUserSelection];
+		} 
+		catch (NumberFormatException e) 
+		{
+			view.errorInvalidFormat();
+			return null;
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			view.errorInvalidInputNumber();
+			return null;
+		}
+		catch (Exception e) 
+		{
+			return null;
+		}
+	}
+	
+	private Student selectStudentFromID(List<String> data) {
+		Student student = null;
+		AbstractStudentFactory studFactory = new StudentFactory();
+		try 
+		{
+		    student = studFactory.createStudent(data);
+		    view.studentSuccessfullySelected(student.getIdentInfo());
+		    studentSelected = true;
+		    return student;
+		}
+		catch (InvalidCountryCodeException e) 
+		{
+			view.errorInvalidCountryNumber();
+		}
+		catch (IndexOutOfBoundsException e) 
+		{
+		    view.errorCorruptedDatabase();
+		}
+		catch (Exception e) 
+		{
+		    view.errorUnknownError();
+		}
+		return null;
+	}
 }

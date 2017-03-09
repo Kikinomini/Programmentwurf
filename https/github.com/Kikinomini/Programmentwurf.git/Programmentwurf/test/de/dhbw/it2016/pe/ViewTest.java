@@ -16,7 +16,7 @@ public class ViewTest {
 	public void testCloseView(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.closeView();
+		view.showCloseView();
 		String outputString = outContent.toString();
 		assertEquals("Thank you for using the DHBW Student Management System :-)\r\n", outputString);
 	}
@@ -25,7 +25,7 @@ public class ViewTest {
 	public void testCorruptedDatabase(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.corruptedDatabase();
+		view.errorCorruptedDatabase();
 		String outputString = outContent.toString();
 		assertEquals("We're sorry, but your database seems to be corrupted.\r\n", outputString);
 	}
@@ -43,7 +43,7 @@ public class ViewTest {
 	public void testInvalidCountryNumber(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.invalidCountryNumber();
+		view.errorInvalidCountryNumber();
 		String outputString = outContent.toString();
 		assertEquals("We're sorry, but that student's country is not recognized by our servers.\r\n", outputString);
 	}
@@ -52,7 +52,7 @@ public class ViewTest {
 	public void testInvalidFormat(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.invalidFormat();
+		view.errorInvalidFormat();
 		String outputString = outContent.toString();
 		assertEquals("Invalid Input!\r\n", outputString);
 	}
@@ -61,7 +61,7 @@ public class ViewTest {
 	public void testInvalidInputNumber(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.invalidInputNumber();
+		view.errorInvalidInputNumber();
 		String outputString = outContent.toString();
 		assertEquals("Please enter a valid number!\r\n", outputString);
 	}
@@ -70,7 +70,7 @@ public class ViewTest {
 	public void testInvalidStudentId(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.invalidStudentId();
+		view.errorInvalidStudentId();
 		String outputString = outContent.toString();
 		assertEquals("We're sorry, but that student's id is not recognized by our servers.\r\n", outputString);
 	}
@@ -79,7 +79,7 @@ public class ViewTest {
 	public void testMenuView(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.menuView();
+		view.showSubMenu();
 		String outputString = outContent.toString();
 		assertEquals("What will you do?\r\n"
 				+ "[2] - Display info\r\n"
@@ -94,7 +94,7 @@ public class ViewTest {
 	public void testPrintParameter(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.printParameter("Hallo");
+		view.printArbitraryInputString("Hallo");
 		String outputString = outContent.toString();
 		assertEquals("Hallo\r\n", outputString);
 	}
@@ -106,7 +106,7 @@ public class ViewTest {
 		view.showMainMenu();
 		String outputString = outContent.toString();
 		assertEquals("What will you do?\r\n"
-					+ "[1] - Enter a studentid:\r\n"
+					+ "[1] - Enter a student id:\r\n"
 					+ "[8] - Exit program\r\n", outputString);
 	}
 	
@@ -123,7 +123,7 @@ public class ViewTest {
 	public void testUnknownError(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.unknownError();
+		view.errorUnknownError();
 		String outputString = outContent.toString();
 		assertEquals("Something unexpected went wrong.\r\n", outputString);
 	}
@@ -132,7 +132,7 @@ public class ViewTest {
 	public void testWelcomeView(){
 		System.setOut(new PrintStream(outContent));
 		StudentenVerwaltungView view = new StudentenVerwaltungView();
-		view.welcomeView();
+		view.showWelcomeView();
 		String outputString = outContent.toString();
 		assertEquals("Welcome to the DHBW Student Management System!\r\n", outputString);
 	}
