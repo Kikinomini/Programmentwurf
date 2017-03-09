@@ -171,7 +171,7 @@ public class StudentFactoryTest {
 		
 		StudentFactory sFactory = new StudentFactory();
 		
-		Student student = sFactory.createStudent(createDatalist("XX"));
+		sFactory.createStudent(createDatalist("XX"));
 		
 
 	}
