@@ -4,11 +4,15 @@ import de.dhbw.it2016.pe.IdentInfo;
 import de.dhbw.it2016.pe.AddressClasses.AbstractAddress;
 import de.dhbw.it2016.pe.PhoneNumberClasses.AbstractPhoneNumber;
 
+// This class represents a concrete student object.
 public final class Student {
 	
+	// The student has three types of information: Identification info (ID + name),
+	// An address and a phone number.
+	
+	private IdentInfo idInfo;
 	private AbstractAddress address;
 	private AbstractPhoneNumber phone;
-	private IdentInfo idInfo;
 
 	public Student(IdentInfo idInfo, AbstractAddress address, AbstractPhoneNumber phone)
 	{
@@ -25,8 +29,8 @@ public final class Student {
 	    return idInfo.getLastName();
 	}
 	
-	public String getCompleteName() 
-	{
+	public String getIdentInfo() 
+	{	
 	    return idInfo.getId() + ": " + idInfo.getFirstName() + " " + idInfo.getLastName();		
 	}
 
@@ -42,4 +46,3 @@ public final class Student {
 	    return phone.formatInternational();
 	}	
 }
-

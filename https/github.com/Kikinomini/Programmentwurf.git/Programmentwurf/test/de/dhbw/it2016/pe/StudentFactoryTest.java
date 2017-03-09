@@ -38,7 +38,7 @@ public class StudentFactoryTest {
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );
 		
-		assertEquals(expectedStudent.getCompleteName(), student.getCompleteName());
+		assertEquals(expectedStudent.getIdentInfo(), student.getIdentInfo());
 		assertEquals(expectedStudent.getFirstName(), student.getFirstName());
 		assertEquals(expectedStudent.getLastName(), student.getLastName());
 		assertEquals(expectedStudent.phone(), student.phone());
@@ -58,7 +58,7 @@ public class StudentFactoryTest {
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );
 		
-		assertEquals(expectedStudent.getCompleteName(), student.getCompleteName());
+		assertEquals(expectedStudent.getIdentInfo(), student.getIdentInfo());
 		assertEquals(expectedStudent.getFirstName(), student.getFirstName());
 		assertEquals(expectedStudent.getLastName(), student.getLastName());
 		assertEquals(expectedStudent.phone(), student.phone());
@@ -78,7 +78,7 @@ public class StudentFactoryTest {
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );
 		
-		assertEquals(expectedStudent.getCompleteName(), student.getCompleteName());
+		assertEquals(expectedStudent.getIdentInfo(), student.getIdentInfo());
 		assertEquals(expectedStudent.getFirstName(), student.getFirstName());
 		assertEquals(expectedStudent.getLastName(), student.getLastName());
 		assertEquals(expectedStudent.phone(), student.phone());
@@ -98,7 +98,7 @@ public class StudentFactoryTest {
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );
 		
-		assertEquals(expectedStudent.getCompleteName(), student.getCompleteName());
+		assertEquals(expectedStudent.getIdentInfo(), student.getIdentInfo());
 		assertEquals(expectedStudent.getFirstName(), student.getFirstName());
 		assertEquals(expectedStudent.getLastName(), student.getLastName());
 		assertEquals(expectedStudent.phone(), student.phone());
@@ -118,7 +118,7 @@ public class StudentFactoryTest {
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );
 		
-		assertEquals(expectedStudent.getCompleteName(), student.getCompleteName());
+		assertEquals(expectedStudent.getIdentInfo(), student.getIdentInfo());
 		assertEquals(expectedStudent.getFirstName(), student.getFirstName());
 		assertEquals(expectedStudent.getLastName(), student.getLastName());
 		assertEquals(expectedStudent.phone(), student.phone());
@@ -138,7 +138,7 @@ public class StudentFactoryTest {
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );
 		
-		assertEquals(expectedStudent.getCompleteName(), student.getCompleteName());
+		assertEquals(expectedStudent.getIdentInfo(), student.getIdentInfo());
 		assertEquals(expectedStudent.getFirstName(), student.getFirstName());
 		assertEquals(expectedStudent.getLastName(), student.getLastName());
 		assertEquals(expectedStudent.phone(), student.phone());
@@ -158,7 +158,7 @@ public class StudentFactoryTest {
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );
 		
-		assertEquals(expectedStudent.getCompleteName(), student.getCompleteName());
+		assertEquals(expectedStudent.getIdentInfo(), student.getIdentInfo());
 		assertEquals(expectedStudent.getFirstName(), student.getFirstName());
 		assertEquals(expectedStudent.getLastName(), student.getLastName());
 		assertEquals(expectedStudent.phone(), student.phone());

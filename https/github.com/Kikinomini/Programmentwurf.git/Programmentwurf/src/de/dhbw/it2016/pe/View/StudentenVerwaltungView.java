@@ -16,7 +16,7 @@ public class StudentenVerwaltungView {
 	public void showMainMenu()
 	{
 		System.out.println("What will you do?");
-		System.out.println("[1] - Enter a studentid:");
+		System.out.println("[1] - Enter a student id:");
 		System.out.println("[8] - Exit program");
 	}
 	
