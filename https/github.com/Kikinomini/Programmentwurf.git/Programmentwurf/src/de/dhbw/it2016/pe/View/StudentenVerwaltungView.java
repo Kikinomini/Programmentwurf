@@ -1,8 +1,22 @@
 package de.dhbw.it2016.pe.View;
 
-public class StudentenVerwaltungView {
+// This class creates the views on the console (e.g. string constants).
 
-	public void menuView()
+public final class StudentenVerwaltungView {
+
+	public final void welcomeView()
+	{
+		System.out.println("Welcome to the DHBW Student Management System!");
+	}
+
+	public final void showMainMenu()
+	{
+		System.out.println("What will you do?");
+		System.out.println("[1] - Enter a student id:");
+		System.out.println("[8] - Exit program");
+	}
+
+	public final void menuView()
 	{
 		System.out.println("What will you do?");
 		System.out.println("[2] - Display info");
@@ -13,64 +27,51 @@ public class StudentenVerwaltungView {
 		System.out.println("[8] - Exit program");
 	}
 	
-	public void showMainMenu()
-	{
-		System.out.println("What will you do?");
-		System.out.println("[1] - Enter a student id:");
-		System.out.println("[8] - Exit program");
-	}
-	
-	public void closeView()
+	public final void closeView()
 	{
 		System.out.println("Thank you for using the DHBW Student Management System :-)");
 	}
 	
-	public void invalidInputNumber()
+	public final void invalidInputNumber()
 	{
 		System.out.println("Please enter a valid number!");
 	}
 	
-	public void invalidFormat()
+	public final void invalidFormat()
 	{
 		System.out.println("Invalid Input!");
 	}
 	
-	public void welcomeView()
-	{
-		System.out.println("Welcome to the DHBW Student Management System!");
-	}
-
-	public void studentSuccessfullySelected(String studentInfo) {
+	public final void studentSuccessfullySelected(final String studentInfo) {
 		System.out.println("Successfully selected " + studentInfo);
 		
 	}
 	
-	public void enterId()
+	public final void enterId()
 	{
 		System.out.println("Enter id: ");
 	}
 	
-	public void printParameter(String string)
+	public final void printParameter(String string)
 	{
 		System.out.println(string);
 	}
 	
-	public void invalidCountryNumber()
+	public final void invalidCountryNumber()
 	{
 		System.out.println("We're sorry, but that student's country is not recognized by our servers.");
 	}
 	
-
-	public void invalidStudentId() {
+	public final void invalidStudentId() {
 		System.out.println("We're sorry, but that student's id is not recognized by our servers.");
 		
 	}
 
-	public void corruptedDatabase() {
+	public final void corruptedDatabase() {
 	    System.out.println("We're sorry, but your database seems to be corrupted.");	    
 	}
 
-	public void unknownError() {
+	public final void unknownError() {
 	    System.out.println("Something unexpected went wrong.");
 	}
 }
