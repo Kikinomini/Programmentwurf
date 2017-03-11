@@ -1,5 +1,3 @@
-// TODO: Refactor!!!!!!11!!!1!
-
 package de.dhbw.it2016.pe.Controller;
 
 import java.io.BufferedReader;
@@ -10,7 +8,7 @@ import de.dhbw.it2016.pe.DataStore;
 import de.dhbw.it2016.pe.MainMenuSelector;
 import de.dhbw.it2016.pe.Exceptions.*;
 import de.dhbw.it2016.pe.Models.*;
-import de.dhbw.it2016.pe.View.StudentenVerwaltungView;
+import de.dhbw.it2016.pe.View.StudentManagementView;
 
 /* Manages the entire behavior of the program,
  * i.e. the administration of the menus.
@@ -23,20 +21,14 @@ public class StudentController {
 	 * 
 	****************************************************************************************/
 
-	// Serves as interface to the main output device.
-	private StudentenVerwaltungView view = new StudentenVerwaltungView();
+	// Serves as interface to the main output device (e.g. the console).
+	private StudentManagementView view = new StudentManagementView();
 
 	// Stores the last input from the console.
 	private String consoleInput;
 
 	// The enumeration "userSelection" displays a user's choice.
 	MainMenuSelector userSelection = null;
-
-	// Gets or sets whether a student is selected or not.
-	private boolean studentSelected = false;
-	
-	// Gets or sets whether the user closes the program or not.
-	private boolean programClosing = false;
 	
 	/*
 	 * This method serves as a connection to the datastore.csv file.
@@ -54,166 +46,184 @@ public class StudentController {
 	 * 
 	****************************************************************************************/
 	
-	public void manageMainMenu(BufferedReader cin) throws IOException, NullPointerException
+	/* 
+	 * This menu is shown before the first student is selected. 
+	 * The user cannot do anything else apart from selecting a user by ID and closing the program.
+	 */
+	public void manageInitialMenu(BufferedReader cin) throws IOException, NullPointerException
 	{
-		programClosing = false;
-
 		Student student = null;
-		String id = null;
 
 		do {
-			
 			// Loading the initial screen
 			view.showWelcomeView();
-			view.showMainMenu();		
+			view.showInitialMenu();		
 
+			// The string variable consoleInput stores the next input from the console.
 			consoleInput = cin.readLine();
 
-			// Select a user by input of an ID from the console
-			userSelection = selectUserFromInputStream();
+			// Let the user select an option by input of an ID from the console,
+			// continue if valid, and return to loop head, if invalid
+			userSelection = getUserSelectionFromInputStream();
 			if (userSelection == null) {
 				continue;
 			}
 			
 			// From here on, the user input will be processed (if it was valid).
-			
-			switch (userSelection) 
-			{
-			
-			case SearchStudentByID:
-				do
-				{
-					view.enterId();
-					id = cin.readLine();
-					List<String> data = readDataFromStore(id);
-			
-					if(data.isEmpty())
-					{
-					    view.errorInvalidStudentId();
-						continue;
-					}
+			switch (userSelection) {		
+				case SearchStudentByID:
+					student = searchStudentByID(cin);
 					
-					/* 
-					 * Selects a student out of the ID. If successful,
-					 * the studentSelected ID is set to true and the do while loop can
-					 * be left. If not successful, the student is null.
-					 */
-					student = selectStudentFromID(data);
+					// If a student has been successfully selected, the actual menu
+					// with further options is evoked. 
+					try {
+						this.manageMainMenu(cin, student);
+					} 
+					catch (InvalidInputIDException e) {
+						view.errorInvalidInputNumber();
+					}	
 					
-					// If student was not loaded successfully (i.e. is not selected),
-					// the do while loop continues.
-				} while(studentSelected == false);
-				
-				try {
-				    programClosing = this.subMenu(cin, student);
-				} catch (InvalidInputIDException e) {
+					// If the main menu is closed, the program will be exited.
+					break;
+					
+				case ExitProgram:
+					view.showCloseView();
+					break;
+					
+				default:
 					view.errorInvalidInputNumber();
-				}	
-				break;
-				
-			case ExitProgram:
-				view.showCloseView();
-				programClosing = true;
-				break;
-				
-			default:
-				view.errorInvalidInputNumber();
-				continue;
+					continue;
 			}
-		} while (programClosing == false);	
+			// If the initial menu is closed instantly, the program will be exited too.
+			break;
+		} while (true);	
 	}
 
-	private boolean subMenu(BufferedReader cin, Student student) throws InvalidInputIDException, IOException 
+	/* 
+	 * This menu is shown as soon as the first student is selected. 
+	 * The user can search for another student by ID
+	 */
+	private void manageMainMenu(BufferedReader cin, Student student) throws InvalidInputIDException, IOException 
 	{
-		do{
-			view.showSubMenu();
+		do {
+			view.showMainMenu();
 			consoleInput = cin.readLine();
 
 			// Select a user by input of an ID from the console
-			userSelection = selectUserFromInputStream();
+			userSelection = getUserSelectionFromInputStream();
 			if (userSelection == null) {
 				continue;
 			}
 			
+			// From here on, the user input will be processed (if it was valid).
 			switch (userSelection) 
 			{
+				// Searches for another student (i.e. repeats the initial selection)
+				case SearchStudentByID:
+					student = searchStudentByID(cin);
+					continue;
+					
+				// Displays some basic information of the selected student.
 				case DisplayInfo:
-					view.printArbitraryInputString(student.getIdentInfo());
+					view.printUserData(student.getIdentInfo());
 					continue;
 					
+				// Displays the address of the selected student.
 				case DisplayAddress:
-					view.printArbitraryInputString(student.address());	
+					view.printUserData(student.address());	
 					continue;
-					
-				case DisplayPhoneNumber:
-					view.printArbitraryInputString(student.phone());
-					continue;
-					
-				case DisplayIntlPhoneNumber:
-					view.printArbitraryInputString(student.intlPhone());
-					continue;
-					
-				case Back:
-					studentSelected = false;
-					break;
 
+				// Displays the national phone number of the selected student.
+				case DisplayPhoneNumber:
+					view.printUserData(student.phone());
+					continue;
+
+				// Displays the international phone number of the selected student.
+				case DisplayIntlPhoneNumber:
+					view.printUserData(student.intlPhone());
+					continue;
+
+				// If [8] is pressed, the do-while-loop is left and the program is exited.
 				case ExitProgram:
 					view.showCloseView();
-					programClosing = true;
 					break;	
-					
+
+				// In case of an irregular input, the program will just continue.
 				default:
 					view.errorInvalidFormat();
-					break;
+					continue;
 			}
-		} while (studentSelected == true && programClosing == false);
-		
-		return programClosing;
+			break;
+		} while (true);
 	}
 	
-	private MainMenuSelector selectUserFromInputStream() {
+	/*
+	 * This method lets the user select a menu option.
+	 * Returns a MainMenuSelector enumerator, if a correct selection has been taken,
+	 * or null, if the selection was invalid.
+	 */
+	private MainMenuSelector getUserSelectionFromInputStream() {
 		try {
 			int tempUserSelection = Integer.parseInt(consoleInput);
 			return MainMenuSelector.values()[tempUserSelection];
 		} 
-		catch (NumberFormatException e) 
-		{
+		catch (NumberFormatException e) {
 			view.errorInvalidFormat();
-			return null;
 		}
-		catch(ArrayIndexOutOfBoundsException e)
-		{
+		catch(ArrayIndexOutOfBoundsException e) {
 			view.errorInvalidInputNumber();
-			return null;
 		}
-		catch (Exception e) 
-		{
-			return null;
-		}
-	}
-	
-	private Student selectStudentFromID(List<String> data) {
-		Student student = null;
-		AbstractStudentFactory studFactory = new StudentFactory();
-		try 
-		{
-		    student = studFactory.createStudent(data);
-		    view.studentSuccessfullySelected(student.getIdentInfo());
-		    studentSelected = true;
-		    return student;
-		}
-		catch (InvalidCountryCodeException e) 
-		{
-			view.errorInvalidCountryNumber();
-		}
-		catch (IndexOutOfBoundsException e) 
-		{
-		    view.errorCorruptedDatabase();
-		}
-		catch (Exception e) 
-		{
-		    view.errorUnknownError();
+		catch (Exception e) {
+			view.errorUnknownError();
 		}
 		return null;
+	}
+	
+	/*
+	 * This method lets the user select an ID from which a student can be loaded.
+	 * The method continues until a valid student has been loaded.
+	 */
+	private Student searchStudentByID(BufferedReader cin) throws IOException {
+		Student student = null;
+		String id = null;
+		AbstractStudentFactory studFactory = new StudentFactory();
+		
+		do
+		{
+			view.enterId();
+			id = cin.readLine();
+			List<String> data = readDataFromStore(id);
+	
+			if(data.isEmpty())
+			{
+			    view.errorInvalidStudentId();
+				continue;
+			}
+			
+			/* 
+			 * Selects a student out of the ID. If successful,
+			 * the studentSelected ID is set to true and the do while loop can
+			 * be left. If not successful, the student is null.
+			 */
+			try {
+			    student = studFactory.createStudent(data);
+			    view.studentSuccessfullySelected(student.getIdentInfo());
+			    
+			    return student;
+			}
+			catch (InvalidCountryCodeException e) {
+				view.errorInvalidCountryNumber();
+			}
+			catch (IndexOutOfBoundsException e) {
+			    view.errorCorruptedDatabase();
+			}
+			catch (Exception e) {
+			    view.errorUnknownError();
+			}
+			
+			// If student was not loaded successfully (i.e. is not selected),
+			// the do while loop continues.
+		} while(student == null);
+		return student;
 	}
 }

@@ -10,7 +10,7 @@ public class Main {
     
     public static void main(String[] args) throws Exception {		
 		StudentController sController = new StudentController();	
-		sController.manageMainMenu(cin);
+		sController.manageInitialMenu(cin);
 		cin.close();
     }
 }

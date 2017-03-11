@@ -9,7 +9,7 @@ public enum MainMenuSelector
     DisplayAddress,
     DisplayPhoneNumber,
     DisplayIntlPhoneNumber,
-    Back,
+    RESERVED_FOR_FURTHER_PURPOSES_6,
     RESERVED_FOR_FURTHER_PURPOSES_7,
     ExitProgram
 }

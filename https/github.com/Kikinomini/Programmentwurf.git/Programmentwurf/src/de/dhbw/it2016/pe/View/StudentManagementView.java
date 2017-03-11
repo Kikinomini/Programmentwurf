@@ -2,7 +2,7 @@ package de.dhbw.it2016.pe.View;
 
 // This class creates the views on the console (e.g. string constants).
 
-public final class StudentenVerwaltungView {
+public final class StudentManagementView {
 
 	/**************************************************************************
 	 * 
@@ -15,21 +15,21 @@ public final class StudentenVerwaltungView {
 		System.out.println("Welcome to the DHBW Student Management System!");
 	}
 
-	public final void showMainMenu()
+	public final void showInitialMenu()
 	{
 		System.out.println("What will you do?");
-		System.out.println("[1] - Enter a student id:");
+		System.out.println("[1] - Enter a student ID");
 		System.out.println("[8] - Exit program");
 	}
 
-	public final void showSubMenu()
+	public final void showMainMenu()
 	{
 		System.out.println("What will you do?");
+		System.out.println("[1] - Enter ID of another student");
 		System.out.println("[2] - Display info");
 		System.out.println("[3] - Display address");
 		System.out.println("[4] - Display phone number");
 		System.out.println("[5] - Display int'l phone number");
-		System.out.println("[6] - Back");
 		System.out.println("[8] - Exit program");
 	}
 	
@@ -49,14 +49,13 @@ public final class StudentenVerwaltungView {
 		System.out.println("Enter id: ");
 	}
 
-	public final void studentSuccessfullySelected(final String studentInfo) {
-		System.out.println("Successfully selected " + studentInfo);
-		
-	}
-
-	public final void printArbitraryInputString(final String string)
+	public final void printUserData(final String string)
 	{
 		System.out.println(string);
+	}
+	
+	public final void studentSuccessfullySelected(final String studentInfo) {
+		System.out.println("Successfully selected " + studentInfo);
 	}
 
 	/**************************************************************************
