@@ -145,4 +145,13 @@ public class ViewTest {
 		String outputString = outContent.toString();
 		assertEquals("We're sorry, but your database seems to be empty.\r\n", outputString);
 	}
+	
+	@Test
+	public void testErrorIOExcetion(){
+		System.setOut(new PrintStream(outContent));
+		StudentManagementView view = new StudentManagementView();
+		view.errorIOExcetion();
+		String outputString = outContent.toString();
+		assertEquals("We're sorry, but something went wrong while enter an Input.\r\n", outputString);
+	}
 }
