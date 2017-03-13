@@ -50,7 +50,7 @@ public class StudentController {
 	 * This menu is shown before the first student is selected. 
 	 * The user cannot do anything else apart from selecting a user by ID and closing the program.
 	 */
-	public void manageInitialMenu(BufferedReader cin) throws IOException, NullPointerException
+	public void manageInitialMenu(BufferedReader cin) 
 	{
 		Student student = null;
 
@@ -60,7 +60,11 @@ public class StudentController {
 			view.showInitialMenu();		
 
 			// The string variable consoleInput stores the next input from the console.
-			consoleInput = cin.readLine();
+			try {
+				consoleInput = cin.readLine();
+			} catch (IOException e1) {
+				view.errorIOExcetion();
+			}
 
 			// Let the user select an option by input of an ID from the console,
 			// continue if valid, and return to loop head, if invalid
@@ -76,12 +80,9 @@ public class StudentController {
 					
 					// If a student has been successfully selected, the actual menu
 					// with further options is evoked. 
-					try {
-						this.manageMainMenu(cin, student);
-					} 
-					catch (InvalidInputIDException e) {
-						view.errorInvalidInputNumber();
-					}	
+					
+					this.manageMainMenu(cin, student);
+					
 					
 					// If the main menu is closed, the program will be exited.
 					break;
@@ -103,11 +104,15 @@ public class StudentController {
 	 * This menu is shown as soon as the first student is selected. 
 	 * The user can search for another student by ID
 	 */
-	private void manageMainMenu(BufferedReader cin, Student student) throws InvalidInputIDException, IOException 
+	private void manageMainMenu(BufferedReader cin, Student student)
 	{
 		do {
 			view.showMainMenu();
-			consoleInput = cin.readLine();
+			try {
+				consoleInput = cin.readLine();
+			} catch (IOException e) {
+				view.errorIOExcetion();
+			}
 
 			// Select a user by input of an ID from the console
 			userSelection = getUserSelectionFromInputStream();
@@ -183,7 +188,7 @@ public class StudentController {
 	 * This method lets the user select an ID from which a student can be loaded.
 	 * The method continues until a valid student has been loaded.
 	 */
-	private Student searchStudentByID(BufferedReader cin) throws IOException {
+	private Student searchStudentByID(BufferedReader cin) {
 		Student student = null;
 		String id = null;
 		AbstractStudentFactory studFactory = new StudentFactory();
@@ -191,7 +196,12 @@ public class StudentController {
 		do
 		{
 			view.enterId();
-			id = cin.readLine();
+			try {
+				id = cin.readLine();
+			} catch (IOException e1) {
+				view.errorIOExcetion();
+			}
+			
 			List<String> data = readDataFromStore(id);
 	
 			if(data.isEmpty())

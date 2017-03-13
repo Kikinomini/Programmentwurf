@@ -7,24 +7,4 @@ public final class InvalidInputIDException extends Exception {
 
     public InvalidInputIDException() { }
     
-    public InvalidInputIDException(String message)
-    {
-        super(message);
-    }
-
-    public InvalidInputIDException(Throwable cause)
-    {
-        super(cause);
-    } 
-
-    public InvalidInputIDException(String message, Throwable cause)
-    {
-        super(message, cause);
-    }
-
-    public InvalidInputIDException(String message, Throwable cause,
-                 boolean enableSuppression, boolean writableStackTrace)
-    {
-    	super(message, cause, enableSuppression, writableStackTrace);
-    }
 }

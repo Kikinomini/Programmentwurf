@@ -95,4 +95,8 @@ public final class StudentManagementView {
 	public final void errorUnknownError() {
 	    System.out.println("Something unexpected went wrong.");
 	}
+	
+	public final void errorIOExcetion() {
+	    System.out.println("We're sorry, but something went wrong while enter an Input.");
+	}
 }
