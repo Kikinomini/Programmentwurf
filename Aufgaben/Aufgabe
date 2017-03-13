@@ -1,0 +1,2 @@
+Bei Eingabe eines Menüpunktes ohne vorheriger Eingabe eines Studenten wird eine nicht definierte Exception geworfen -> muss abgefangen werden
+Bei Eingabe einer unbekannten ID wird eine nicht definierte Exception geworfen -> muss abgefangen werden

@@ -1,11 +1,11 @@
 0: ID
 1: Vorname
 2: Nachname
-3: Stra√üe
+3: Straﬂe
 4: Hausnummer
 5: Stadt
 6: Postleitzahl
-7: L√§ndercode
+7: L‰ndercode
 8: Vorwahl
 9: Telefonnummer
 10: State (US)
