@@ -136,4 +136,13 @@ public class ViewTest {
 		String outputString = outContent.toString();
 		assertEquals("Welcome to the DHBW Student Management System!\r\n", outputString);
 	}
+	
+	@Test
+	public void testErrorEmptyDatabase(){
+		System.setOut(new PrintStream(outContent));
+		StudentManagementView view = new StudentManagementView();
+		view.errorEmptyDatabase();
+		String outputString = outContent.toString();
+		assertEquals("We're sorry, but your database seems to be empty.\r\n", outputString);
+	}
 }
