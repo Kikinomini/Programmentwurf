@@ -3,8 +3,7 @@ package de.dhbw.it2016.pe.PhoneNumberClasses;
 public class PhoneNumberDE extends AbstractPhoneNumber {
 	
 	public PhoneNumberDE(String areaCode, String subscriber) {
-		this.areaCode = areaCode;
-		this.subscriber = subscriber;
+		super(areaCode, subscriber);
 	}
 	
 	/*

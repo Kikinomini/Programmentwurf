@@ -4,8 +4,7 @@ public class PhoneNumberFN extends AbstractPhoneNumber {
 
 
 	public PhoneNumberFN(String areaCode, String subscriber) {
-		this.areaCode = areaCode;
-		this.subscriber = subscriber;
+		super(areaCode, subscriber);
 	}
 	
 	/*

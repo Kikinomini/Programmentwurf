@@ -33,7 +33,7 @@ public class StudentFactoryTest {
 		
 		Student student = sFactory.createStudent(createDatalist("CN"));
 		
-		AddressCN address = new AddressCN("Musterstrasse", "123", "Musterstadt", "12345", "TE");
+		AddressCN address = new AddressCN("123", "Musterstrasse", "Musterstadt", "12345", "TE");
 		PhoneNumberNANP phoneNumber = new PhoneNumberNANP("02323", "1234567890");
 		IdentInfo info = new IdentInfo("0", "Max", "Mustermann");
 		Student expectedStudent = new Student(info, address, phoneNumber );

@@ -3,10 +3,7 @@ package de.dhbw.it2016.pe.AddressClasses;
 public class AddressUK extends AbstractAddress {
 	
 	public AddressUK(String street, String streetNumber, String city, String zipCode) {
-		this.street = street;
-		this.streetNumber = streetNumber;		
-		this.city = city;
-		this.zipCode = zipCode;
+		super(street, streetNumber, city, zipCode);
 	}
 	
 	/*

@@ -10,8 +10,7 @@ public class PhoneNumberNANP extends AbstractPhoneNumber {
 
 
 	public PhoneNumberNANP(String areaCode, String subscriber) {
-		this.areaCode = areaCode;
-		this.subscriber = subscriber;
+		super(areaCode, subscriber);
 	}
 	
 	/*

@@ -6,10 +6,7 @@ public class AddressFR extends AbstractAddress  {
 		
 		// Addresses in France are always in capital letters.
 		// Hence street and city must be allocated with the method String.toUpperCase().
-		this.street = street.toUpperCase();
-		this.streetNumber = streetNumber;
-		this.city = city.toUpperCase();
-		this.zipCode = zipCode;
+		super(street.toUpperCase(), streetNumber, city.toUpperCase(), zipCode);
 	}
 	
 	/*

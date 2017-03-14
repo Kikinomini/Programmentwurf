@@ -4,11 +4,8 @@ public class AddressCN extends AbstractAddress {
 	
 	private String province;
 	
-	public AddressCN(String streetNumber, String street, String city, String zipCode, String state) {
-		this.street = street;
-		this.streetNumber = streetNumber;		
-		this.city = city;
-		this.zipCode = zipCode;
+	public AddressCN(String street, String streetNumber, String city, String zipCode, String state) {
+		super(street, streetNumber, city, zipCode);
 		this.province = state;
 	}
 	

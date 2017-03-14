@@ -39,7 +39,7 @@ public class StudentFactory extends AbstractStudentFactory {
 		{
 			// Student from Canada
 			case "CN":
-				AbstractAddress addressCN = new AddressCN(data.get(info.STREET), data.get(info.STREET_NUMBER),
+				AbstractAddress addressCN = new AddressCN(data.get(info.STREET_NUMBER), data.get(info.STREET),
 						data.get(info.CITY), data.get(info.ZIP_CODE), data.get(info.PROVINCE_OPTIONAL));
 				AbstractPhoneNumber phone = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
 				student = new Student(idInfo, addressCN, phone);

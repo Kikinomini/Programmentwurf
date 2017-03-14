@@ -103,6 +103,7 @@ public class StudentController {
 	/* 
 	 * This menu is shown as soon as the first student is selected. 
 	 * The user can search for another student by ID
+	 * or process the loaded student's information.
 	 */
 	private void manageMainMenu(BufferedReader cin, Student student)
 	{

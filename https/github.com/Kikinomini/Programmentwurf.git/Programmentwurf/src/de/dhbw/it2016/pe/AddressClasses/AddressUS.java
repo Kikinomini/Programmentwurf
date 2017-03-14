@@ -6,10 +6,7 @@ public class AddressUS extends AbstractAddress {
 	private String state;
 	
 	public AddressUS(String street, String streetNumber, String city, String zipCode, String state) {
-		this.street = street;
-		this.streetNumber = streetNumber;		
-		this.city = city;
-		this.zipCode = zipCode;
+		super(street, streetNumber, city, zipCode);
 		this.state = state;
 	}
 	

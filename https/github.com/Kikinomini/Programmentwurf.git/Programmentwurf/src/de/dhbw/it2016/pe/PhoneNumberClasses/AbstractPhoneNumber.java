@@ -21,6 +21,11 @@ public abstract class AbstractPhoneNumber {
      * Adjust the international format instead of this method.
      */
     
+	protected AbstractPhoneNumber(String areaCode, String subscriber) {
+		this.areaCode = areaCode;
+		this.subscriber = subscriber;
+	}
+	
     public final String formatNational() {
         StringBuilder builder = new StringBuilder();
         
