@@ -28,13 +28,12 @@ public class StudentController {
 	private String consoleInput;
 
 	// The enumeration "userSelection" displays a user's choice.
-	MainMenuSelector userSelection = null;
+	private MainMenuSelector userSelection = null;
 	
 	/*
 	 * This method serves as a connection to the datastore.csv file.
 	 */
-	public List<String> readDataFromStore(String id)
-	{
+	public List<String> readDataFromStore(String id) {
 		// The data list stores all the information out of one line.
 		List<String> data = DataStore.read(id);
 		return data;
@@ -50,8 +49,7 @@ public class StudentController {
 	 * This menu is shown before the first student is selected. 
 	 * The user cannot do anything else apart from selecting a user by ID and closing the program.
 	 */
-	public void manageInitialMenu(BufferedReader cin) 
-	{
+	public void manageInitialMenu(BufferedReader cin) {
 		Student student = null;
 
 		do {
@@ -62,7 +60,8 @@ public class StudentController {
 			// The string variable consoleInput stores the next input from the console.
 			try {
 				consoleInput = cin.readLine();
-			} catch (IOException e1) {
+			} 
+			catch (IOException e1) {
 				view.errorIOExcetion();
 			}
 
@@ -79,10 +78,8 @@ public class StudentController {
 					student = searchStudentByID(cin);
 					
 					// If a student has been successfully selected, the actual menu
-					// with further options is evoked. 
-					
+					// with further options is evoked. 		
 					this.manageMainMenu(cin, student);
-					
 					
 					// If the main menu is closed, the program will be exited.
 					break;
@@ -105,13 +102,13 @@ public class StudentController {
 	 * The user can search for another student by ID
 	 * or process the loaded student's information.
 	 */
-	private void manageMainMenu(BufferedReader cin, Student student)
-	{
+	private void manageMainMenu(BufferedReader cin, Student student) {
 		do {
 			view.showMainMenu();
 			try {
 				consoleInput = cin.readLine();
-			} catch (IOException e) {
+			} 
+			catch (IOException e) {
 				view.errorIOExcetion();
 			}
 
@@ -122,8 +119,8 @@ public class StudentController {
 			}
 			
 			// From here on, the user input will be processed (if it was valid).
-			switch (userSelection) 
-			{
+			switch (userSelection) {
+			
 				// Searches for another student (i.e. repeats the initial selection)
 				case SearchStudentByID:
 					student = searchStudentByID(cin);
@@ -194,19 +191,18 @@ public class StudentController {
 		String id = null;
 		AbstractStudentFactory studFactory = new StudentFactory();
 		
-		do
-		{
+		do {
 			view.enterId();
 			try {
 				id = cin.readLine();
-			} catch (IOException e1) {
+			} 
+			catch (IOException e1) {
 				view.errorIOExcetion();
 			}
 			
 			List<String> data = readDataFromStore(id);
 	
-			if(data.isEmpty())
-			{
+			if(data.isEmpty()) {
 			    view.errorInvalidStudentId();
 				continue;
 			}

@@ -35,8 +35,7 @@ public class StudentFactory extends AbstractStudentFactory {
 		 * The concrete student itself does not know which phone number is associated with him (i.e. the object has no memory)
 		 */
 		
-		switch (country) 
-		{
+		switch (country) {
 			// Student from Canada
 			case "CN":
 				AbstractAddress addressCN = new AddressCN(data.get(info.STREET_NUMBER), data.get(info.STREET),

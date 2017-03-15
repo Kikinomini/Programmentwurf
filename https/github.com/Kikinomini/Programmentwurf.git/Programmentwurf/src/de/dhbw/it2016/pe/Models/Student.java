@@ -14,8 +14,7 @@ public final class Student {
 	private AbstractAddress address;
 	private AbstractPhoneNumber phone;
 
-	public Student(IdentInfo idInfo, AbstractAddress address, AbstractPhoneNumber phone)
-	{
+	public Student(IdentInfo idInfo, AbstractAddress address, AbstractPhoneNumber phone) {
 	    this.idInfo = idInfo;
 	    this.address = address;
 	    this.phone = phone;
@@ -29,8 +28,7 @@ public final class Student {
 	    return idInfo.getLastName();
 	}
 	
-	public String getIdentInfo() 
-	{	
+	public String getIdentInfo() {	
 	    return idInfo.getId() + ": " + idInfo.getFirstName() + " " + idInfo.getLastName();		
 	}
 
