@@ -13,7 +13,7 @@ public class AddressCN extends AbstractAddress {
 	 * Formats addresses for Canada.
 	 * Canadian addresses must be in the following format:
 	 * <STREET_NUMBER> <STREET>
-	 * <CITY>, <STATE> <ZIP_CODE>
+	 * <CITY>, <PROVINCE> <ZIP_CODE>
 	 * Canada
 	 */
 	public String formatAddress() {
