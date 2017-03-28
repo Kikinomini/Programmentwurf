@@ -10,7 +10,7 @@ public abstract class AbstractPhoneNumber {
     /* 
      * If this constant is appended, one digit of the national number
      * (e.g. the leading zero in many countries) is skipped.
-     * This is not used for speedruns.
+     * This is not a glitch used for speedruns.
      */
     protected final byte LEADING_ZERO_SKIP = 1;
     
