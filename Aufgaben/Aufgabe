@@ -1,9 +1,9 @@
 Aufgabe 2 Abweichungen:
 
-- Bei Eingabe eines Menüpunktes ohne vorheriger Eingabe eines Studentenmatrikelnummer wird eine nicht definierte Exception geworfen -> muss abgefangen werden
+- Bei Eingabe eines Menüpunktes ohne vorheriger Eingabe einer Studentenmatrikelnummer wird eine nicht definierte Exception geworfen -> muss abgefangen werden
 - Bei Eingabe einer unbekannten ID wird eine nicht definierte Exception geworfen -> muss abgefangen und eine neue Suche ermöglicht werden
 - Bei Eingabe eines nicht definierten Menüpunktes wird eine nicht definierte Exception geworfen -> muss abgefangen werden
-- Daten werden nur im deutschen Adress- und Telefonnummerformate ausgegeben
+- Daten werden nur im deutschen Adress- und Telefonnummerformat ausgegeben
 
 Aufgabe 3:
 
