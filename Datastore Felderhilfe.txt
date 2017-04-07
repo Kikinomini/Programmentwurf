@@ -1,11 +1,11 @@
 0: ID
-1: Vorname
-2: Nachname
-3: Straﬂe
-4: Hausnummer
-5: Stadt
-6: Postleitzahl
-7: L‰ndercode
-8: Vorwahl
-9: Telefonnummer
-10: State (US)
+1: First name
+2: Last name
+3: Street
+4: Street number
+5: City
+6: Zip code
+7: Country code
+8: Area code
+9: Subscriber
+10: Subnational entity (state, province); optional
