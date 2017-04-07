@@ -9,14 +9,14 @@ Aufgabe 3:
 
 - TestFormat() in der Klasse PhoneNumberTest funktioniert
 - TestFormatInternational() in der Klasse PhoneNumberTest funktioniert nicht: Aufruf der format() Methode in der Testklasse, nicht der formatInternational() 
-- TestFormat() in der Klasse AdressTest funktioniert nicht: erwartet falsches Format von der Testmethode
+- TestFormat() in der Klasse AddressTest funktioniert nicht: erwartet falsches Format von der Testmethode
 
 Aufgabe 4:
 
 Verwendung der Pattern:
 
 MVC:
-Um eine strikte Trennung zwischen Daten, Programmlogik und Anzeige zu bekommen haben wir uns für die Anwendung des Model View Controller Patterns entschieden. 
+Um eine strikte Trennung zwischen Daten, Programmlogik und Anzeige zu bekommen, haben wir uns für die Anwendung des Model View Controller Patterns entschieden. 
 
 Factory:
 Um ähnliche Klassen mit gemeinsamen Verhaltensweisen und unterschiedlichen Adress- und Telefonnummern erzeugen zu können, haben wir uns für die Anwendung des Factory Patterns entschieden.
