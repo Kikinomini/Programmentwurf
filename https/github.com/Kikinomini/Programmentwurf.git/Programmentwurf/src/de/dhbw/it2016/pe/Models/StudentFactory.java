@@ -36,12 +36,20 @@ public class StudentFactory extends AbstractStudentFactory {
 		 */
 		
 		switch (country) {
+			// Student from Austria
+			case "AT":
+				AbstractAddress addressAT = new AddressAT(data.get(info.STREET_NUMBER), data.get(info.STREET),
+						data.get(info.CITY), data.get(info.ZIP_CODE));
+				AbstractPhoneNumber phoneAT = new PhoneNumberAT(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				student = new Student(idInfo, addressAT, phoneAT);
+				return student;
+		
 			// Student from Canada
 			case "CN":
 				AbstractAddress addressCN = new AddressCN(data.get(info.STREET_NUMBER), data.get(info.STREET),
 						data.get(info.CITY), data.get(info.ZIP_CODE), data.get(info.PROVINCE_OPTIONAL));
-				AbstractPhoneNumber phone = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
-				student = new Student(idInfo, addressCN, phone);
+				AbstractPhoneNumber phoneCN = new PhoneNumberNANP(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				student = new Student(idInfo, addressCN, phoneCN);
 				return student;
 
 			// Student from Germany

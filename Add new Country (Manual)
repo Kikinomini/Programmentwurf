@@ -1,8 +1,128 @@
 Mandatory steps for new country
 
-1) Create new class in folder de.dhbw.it.2016.pe.StudentClass
-   Name: Student<CountryCode>.java
-   Extends Student
-   Implements AbstractStudentFactory
-   
-2) 
+1) Add phone number class for new country
+
+	1.1 Create new phone number class in PhoneNumberClasses folder. Naming convention is as follows:
+	   PhoneNumber<CountryCode>.java, e.g. PhoneNumberAT.java for Austria
+	   
+	   Copy following code:
+	   
+	    package de.dhbw.it2016.pe.PhoneNumberClasses;
+	
+		public class PhoneNumberXX extends AbstractPhoneNumber {
+		
+		public PhoneNumberXX(String areaCode, String subscriber) {
+			super(areaCode, subscriber);
+		}
+		
+		/*
+		 * Formats a YY international phone number.
+	     * The country code is +ZZ; the national leading zero is [not] deleted.
+		 */
+		public String formatInternational() {
+			StringBuilder builder = new StringBuilder();
+	
+			builder.append("+ZZ-");
+			builder.append(areaCode.substring(LEADING_ZERO_SKIP));
+			builder.append("-");
+			builder.append(subscriber);
+			
+			return builder.toString();
+		}
+	}
+	
+	1.2 Subsequently replace:
+		XX by the country code (e.g. AT)
+		YY by the adjectival form of the country (e.g. Austrian)
+		ZZ by the country code (e.g. 43)
+		
+	1.3 If there is no leading zero (as in North America) delete the line
+			builder.append(areaCode.substring(LEADING_ZERO_SKIP));
+
+2) Add address class for new country
+
+	2.1 Create new address class in AddressClasses folder. Naming convention is as follows:
+		Address<CountryCode>.java, e.g. AddressAT.java for Austria
+		
+	Copy following code there:
+	
+	package de.dhbw.it2016.pe.AddressClasses;
+	
+	public class AddressDE extends AbstractAddress {
+	
+		private String province;
+	
+		public AddressDE(String street, String streetNumber, String city, String zipCode, String province) {
+			super(street, streetNumber, city, zipCode);
+			this.province = province;		
+		}
+		
+		/*
+		 * Formats addresses for <COUNTRY_NAME>.
+		 * <COUNTRY_ADJECIVAL> addresses must be in the following format:
+		 * ADD FORMAT HERE
+		 * <COUNTRY_NAME>
+		 */
+		public String formatAddress() {
+			String newline = System.getProperty("line.separator");
+			StringBuilder builder = new StringBuilder();
+			
+			// Has to be changed completely: 
+				builder.append(param_1);
+				builder.append(" ");
+				builder.append(param_2);
+				builder.append(newline);
+			// End of change		
+			
+			builder.append("<COUNTRY_NAME>");
+			
+			return builder.ToString();
+		}
+	}
+	
+	2.2 Subsequently replace:
+	
+		<COUNTRY_NAME> by the country name (e.g. Austria)
+		<COUNTRY_ADJECTIVAL> by the adjectival form (e.g. Austrian)
+		
+	2.3 If subnational entities are not relevant for the address format, delete the following lines:
+	
+		private String province;
+		(...)
+		this.province = province;		
+		
+	And delete the "String province" parameter from the constructor.
+	
+	2.4 ADD FORMAT HERE: Specify here how an address in that particular country is displayed. Use chevrons <> to display. E.g:
+	
+		 * <STREET> <STREET_NUMBER>
+		 * <ZIP_CODE> <CITY>
+		
+	2.5 In the method formatAddress(), use the builder.append() method to format the string. Use the following statements:
+	
+		builder.append(param): the variable you used will be appended.
+		builder.append(" "): an empty space is appended.
+		builder.append(", "): a komma is apppended.
+		builder.append(newline): a new line with carriage return is added. 
+	
+3) Add declaration in StudentFactory.java class
+
+	3.1 In Method createStudent() in the switch case statement: 
+	add the following code among the other countries (ordered alphabetically after country code):
+	
+			// Student from <COUNTRY_NAME>
+			case "XX":
+				AbstractAddress addressXX = new AddressXX(data.get(info.STREET_NUMBER), data.get(info.STREET),
+						data.get(info.CITY), data.get(info.ZIP_CODE), data.get(info.PROVINCE_OPTIONAL));
+				AbstractPhoneNumber phoneXX = new PhoneNumberXX(data.get(info.PHONE_AREA_CODE), data.get(info.PHONE_SUBSCRIBER));
+				student = new Student(idInfo, addressXX, phoneXX);
+				return student;
+				
+	3.2 Subsequently replace 
+		<COUNTRY_NAME> by the country name, e.g. Austria
+		XX by the country code, e.g. AT
+		
+	3.3 If subnational entities are not relevant for the address format, 
+	delete the argument "data.get(info.PROVINCE_OPTIONAL)" from the address constructor
+	
+4) From now on, you can use that country!
